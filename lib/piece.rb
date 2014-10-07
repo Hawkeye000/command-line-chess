@@ -13,5 +13,9 @@ class Piece
     @location
   end
 
+  def icon
+    @icon
+  end
+
 end
 

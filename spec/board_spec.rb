@@ -17,10 +17,27 @@ describe Board do
       expect(@board.board["Z8"]).to be nil
     end
 
-    it "should return empty if the hash is in bounds" do
-      expect(@board.board["A1"]).to eq("empty")
+    it "should not be nil if the hash is in bounds" do
+      expect(@board.board["A1"]).to_not be nil
     end
     
+  end
+
+  describe "setting up the game" do
+
+    before { @board = Board.new }
+  
+    it "should have a pawn on A2" do
+      expect(@board.board["A2"]).to be_a(Pawn)
+    end
+
+    it "should have a queen on D8" do
+      expect(@board.board["D8"]).to be_a(Queen)
+    end
+
+    it "should be empty on D4" do
+      expect(@board.board["D4"]).to eq("empty")
+    end
   end
 
 end

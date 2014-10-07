@@ -8,5 +8,8 @@ class Piece
     @color
   end
 
+  def location
+  end
+
 end
 

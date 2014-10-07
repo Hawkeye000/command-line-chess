@@ -1,9 +1,9 @@
 require_relative 'piece.rb'
 
-WHITE_QUEEN_ICON = "\u2655"
-BLACK_QUEEN_ICON = "\u265E"
-
 class Queen < Piece
+
+  WHITE_QUEEN_ICON = "\u2655"
+  BLACK_QUEEN_ICON = "\u265E"
 
   def initialize(color = "white", location = "A1")
     case color.downcase

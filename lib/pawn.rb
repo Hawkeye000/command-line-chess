@@ -1,9 +1,9 @@
 require_relative 'piece.rb'
 
-WHITE_PAWN_ICON = "\u2659"
-BLACK_PAWN_ICON = "\u265F"
-
 class Pawn < Piece
+
+  WHITE_PAWN_ICON = "\u2659"
+  BLACK_PAWN_ICON = "\u265F"
 
   def initialize(color = "white", location = "A1")
     case color.downcase

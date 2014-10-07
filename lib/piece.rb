@@ -17,5 +17,9 @@ class Piece
     @icon
   end
 
+  def to_s
+    @icon
+  end
+
 end
 

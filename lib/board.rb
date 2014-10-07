@@ -1,4 +1,4 @@
-Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+Dir[File.dirname(__FILE__) + '/*'].each { |file| require file }
 
 class Board
 

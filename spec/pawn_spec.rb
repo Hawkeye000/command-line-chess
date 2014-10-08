@@ -26,4 +26,21 @@ describe Pawn do
     expect($stdout.string).to include("\u265F")
   end
 
+  describe "valid moves" do
+    before { @white_pawn = Pawn.new("white", "D2") }
+
+    it "should be able to move forward once ordinarility" do
+      expect(@white_pawn.valid_move?("D3")).to be_true
+    end
+
+    it "should be able to move forward twice on the first move" do
+      expect(@white_pawn.valid_move?("D4")).to be_true
+    end
+
+    it "should not be able to move forward three times" do
+      expect(@white_pawn.valid_move?("D5")).to be_false
+    end
+
+  end
+
 end

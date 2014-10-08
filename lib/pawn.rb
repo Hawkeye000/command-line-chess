@@ -15,4 +15,20 @@ class Pawn < Piece
     super
   end
 
+  def valid_move?(new_loc)
+    x, y = new_loc - @location
+
+    y *= -1 if @color == "black"
+    
+    if x == 0 && y == 1
+      return true
+    elsif x == 0 && y <= 2 && @moves == 0
+      return true
+    else
+      super
+    end
+
+  end
+
+
 end

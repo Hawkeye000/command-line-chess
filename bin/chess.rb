@@ -2,19 +2,22 @@ require_relative '../lib/board.rb'
 
 @board = Board.new
 
-@board.display
+@w_player = Player.new("white")
+@b_player = Player.new("black")
 
-@board.rv_piece("F1")
-@board.rv_piece("G1")
+players = [@w_player, @b_player]
 
-@board.display
+player = players[0]
+opponent = players[1]
 
-@board.move("E1", "G1")
+loop do 
 
-@board.display
+  @board.display
 
-@board.move("D2", "D4")
+  puts "#{player.color.capitalize} Player, enter your move:"
+  locs = gets.chomp.split(" ")
+  player.move(locs[0], locs[1], @board)
 
-@board.display
-
-puts @board.piece_between?("E1", "G1")
+  player, opponent = opponent, player
+  
+end

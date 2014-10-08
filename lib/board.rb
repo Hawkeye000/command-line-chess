@@ -21,6 +21,7 @@ class Board
             Queen.new("black", loc)
           elsif loc == "E8"
             King.new("black", loc)
+            
           elsif number == "2"
             Pawn.new("white", loc)
           elsif loc == "A1" || loc == "H1"

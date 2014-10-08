@@ -62,5 +62,4 @@ class Board
     puts "  " + ("A".."H").to_a.join(" ")
   end
 
-
 end

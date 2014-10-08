@@ -57,8 +57,19 @@ describe Pawn do
       expect(@white_pawn.valid_move?("D1", @board)).to be_false
     end
 
-    # write tests for taking pieces
+  end
 
+  describe "taking other pieces" do
+
+    it "should be able to move diagonally to take other pieces" do
+      @board = Board.new
+      @white_pawn = @board.board["D2"]
+      @black_pawn = Pawn.new("black", "C3")
+      @board.set_piece(@black_pawn)
+      expect(@white_pawn.valid_move?("C3", @board)).to be_true
+    end
+   
+    # add test for en passant
   end
 
 end

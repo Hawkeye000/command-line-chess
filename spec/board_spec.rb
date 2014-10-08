@@ -40,6 +40,12 @@ describe Board do
 
   end
 
+  it "should be able to set pieces on the board" do
+    @white_pawn = Pawn.new("white", "D4")
+    @board.set_piece(@white_pawn)
+    expect(@board.board["D4"]).to eq(@white_pawn)
+  end
+
   describe "making moves" do
 
     it "should know when a notation refers to a spot off the board" do

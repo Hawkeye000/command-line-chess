@@ -22,6 +22,7 @@ class Pawn < Piece
     
     if x == 0 && y == 1
     elsif x == 0 && y == 2 && @moves == 0
+    elsif y == 1 && x.abs == 1 && board.board[new_loc].color != self.color
     else
       return false
     end

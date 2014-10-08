@@ -41,6 +41,10 @@ class Board
     end
   end
 
+  def set_piece(piece)
+    @board[piece.location] = piece
+  end
+
   def board
     @board
   end

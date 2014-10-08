@@ -67,7 +67,7 @@ describe Board do
     end
 
     it "should know when pieces are in between two locations" do
-      expect(@board.piece_between?("A1", "A3")).to eq("A2")
+      expect(@board.piece_between?("A1", "A3")).to be_true
     end
 
     it "should know when there are no pieces in between two locations" do

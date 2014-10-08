@@ -67,6 +67,7 @@ class Board
   end
 
   def piece_between?(loc_1, loc_2)
+    squares_between(loc_1, loc_2).any? { |square| @board[square] != " " }
   end
 
 end

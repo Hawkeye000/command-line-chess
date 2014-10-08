@@ -49,6 +49,16 @@ class Board
     @board
   end
 
+  def move(loc_1, loc_2)
+    piece = @board[loc_1]
+    if piece.move(loc_2, self)
+      @board[loc_1] = " "
+      self.set_piece(piece)
+    else 
+      return nil
+    end
+  end
+
   def display
     ("1".."8").to_a.reverse.each do |row|
       print row + " "

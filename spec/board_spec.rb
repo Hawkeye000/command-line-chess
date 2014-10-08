@@ -79,6 +79,55 @@ describe Board do
     it "should know when there are no pieces in between two locations" do
       expect(@board.piece_between?("A2", "A4")).to be_false
     end
+
+    describe "for white pawn" do
+
+      before { @board.move("D2", "D4") }
+
+      it "should be able to move a white pawn two spaces forward" do
+        expect(@board.board["D4"]).to be_a(Pawn)
+      end
+
+      it "should not be able to move a white pawn two spaces on the next turn" do
+        @board.move("D4", "D6")
+        expect(@board.board["D6"]).to eq(" ")
+      end
+
+      it "should be able to move a white pawn one space on the next turn" do
+        @board.move("D4", "D5")
+        expect(@board.board["D5"]).to be_a(Pawn)
+      end
+    end
+
+    describe "for a white knight" do
+
+      it "should be able to jump the front row of pawns" do
+        @board.move("B1", "A3")
+        expect(@board.board["A3"]).to be_a(Knight)
+      end
+
+      it "should not be able to take its own color" do
+        @board.move("B1", "D2")
+        expect(@board.board["D2"]).to be_a(Pawn)
+      end
+
+      describe "taking an opposing color" do
+        before do 
+          @board.move("B1", "A3")
+          @board.move("A3", "B5")
+          @board.move("B5", "C7")
+          @knight = @board.board["C7"]
+        end
+
+        it "should have a white piece on the square" do 
+          expect(@knight.color).to eq("white")
+        end
+        
+        it "shoulbe be a knight" do
+          expect(@knight).to be_a(Knight)
+        end
+      end
+    end
   end
 
 end

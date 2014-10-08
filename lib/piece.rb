@@ -27,7 +27,7 @@ class Piece
   def move(new_loc, board)
     if self.valid_move?(new_loc, board)
       @moves += 1
-      return new_loc 
+      @location = new_loc
     else 
       return nil
     end

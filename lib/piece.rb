@@ -24,9 +24,13 @@ class Piece
     @icon
   end
 
-  def move(new_loc)
-    @moves += 1
-    return new_loc if self.valid_move?
+  def move(new_loc, board)
+    if self.valid_move?(new_loc, board)
+      @moves += 1
+      return new_loc 
+    else 
+      return nil
+    end
   end
 
   def valid_move?(new_loc, board)

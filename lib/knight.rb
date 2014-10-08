@@ -17,7 +17,7 @@ class Knight < Piece
 
   def valid_move?(new_loc)
     x, y = new_loc - @location
-    if x.abs == 2 && y.abs == 1 || x.abs == 1 && y.abs == 2
+    if (x.abs == 2 && y.abs == 1) || (x.abs == 1 && y.abs == 2)
       return true
     else
       super

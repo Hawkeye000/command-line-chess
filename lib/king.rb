@@ -22,7 +22,7 @@ class King < Piece
     else
       return false
     end
-    super
+    super(new_loc, board)
   end
 
 end

@@ -47,13 +47,13 @@ def check_castle(king, board, horiz_move)
   end
 
   if king.black?
+    return false unless king.location == "E8"
     queen_rook = board.board["A8"]
     king_rook = board.board["H8"]
-    return false if king.location != ["E8"]
   elsif king.white?
+    return false unless king.location == "E1"
     queen_rook = board.board["A1"]
     king_rook = board.board["H1"]
-    return false if king.location != ["E1"]
   else 
     return nil
   end
@@ -62,5 +62,23 @@ def check_castle(king, board, horiz_move)
     queen_rook.is_a?(Rook) && queen_rook.moves == 0 ? true : false
   elsif horiz_move > 0
     king_rook.is_a?(Rook) && king_rook.moves == 0 ? true : false
+  end
+end
+
+# check if a castling move was done by the king and move the complementary rook
+def castle_complement(piece, board)
+  if piece.moves == 0
+    if piece.is_a?(King)
+      case piece.location
+      when "C1"
+        board.move("A1", "D1")
+      when "G1"
+        board.move("H1", "F1")
+      when "C8"
+        board.move("A8", "D8")
+      when "G8"
+        board.move("H8", "F8")
+      end
+    end
   end
 end

@@ -36,13 +36,19 @@ describe King do
       before do 
         @board = Board.new
         @king = @board.board["E1"]
+        @board.rv_piece("F1")
+        @board.rv_piece("G1")
       end
 
       it "should be valid to move twice horizontally on the first move\ 
           when there is a rook on that side and no other pieces between" do
-        @board.rv_piece("F1")
-        @board.rv_piece("G1")
         expect(@king.valid_move?("G1", @board))
+      end
+
+      it "should move the king to the right correct location" do
+        @board.move("E1", "G1")
+        expect(@board.board["G1"]).to be_a(King)
+        expect(@king.location).to eq("G1")
       end
 
     end

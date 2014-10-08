@@ -17,6 +17,11 @@ loop do
   puts "#{player.color.capitalize} Player, enter your move:"
   locs = gets.chomp.split(" ")
 
+  case locs[0]
+  when "exit", "quit", "q"
+    break
+  end
+
   unless player.move(locs[0], locs[1], @board).nil?
     player, opponent = opponent, player
   end

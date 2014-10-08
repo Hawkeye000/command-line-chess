@@ -9,6 +9,10 @@ class String
     end
   end
 
+  def color
+    nil
+  end
+
 end
 
 def squares_between(loc_1, loc_2)

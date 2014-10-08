@@ -56,6 +56,8 @@ describe Pawn do
       expect(@white_pawn.valid_move?("D1")).to be_false
     end
 
+    # write tests for taking pieces
+
   end
 
 end

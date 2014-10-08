@@ -13,6 +13,10 @@ class String
     nil
   end
 
+  def opponent?(o = nil)
+    false
+  end
+
 end
 
 def squares_between(loc_1, loc_2)

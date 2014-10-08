@@ -53,6 +53,10 @@ describe Pawn do
       expect(@white_pawn.valid_move?("C2", @board)).to be_false
     end
 
+    it "should not be able to move diagonally" do
+      expect(@white_pawn.valid_move?("C3", @board)).to be_false
+    end
+
     it "should not be able to move backwards" do
       expect(@white_pawn.valid_move?("D1", @board)).to be_false
     end
@@ -69,7 +73,16 @@ describe Pawn do
       expect(@white_pawn.valid_move?("C3", @board)).to be_true
     end
    
-    # add test for en passant
+    it "should be able to capture pieces en passant (in passing)" do
+      @board = Board.new
+      @white_pawn = @board.board["D2"]
+      @black_pawn = @board.board["E7"]
+      @board.move("D2", "D4")
+      @board.move("D4", "D5")
+      @board.move("E7", "E5")
+      @board.move("D5", "E6")
+      expect(@board.board["E5"]).to eq(" ")
+    end
   end
 
 end

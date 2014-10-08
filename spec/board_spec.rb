@@ -6,6 +6,7 @@ describe Board do
 
   it { should respond_to :board }
   it { should respond_to :piece_between }
+  it { should respond_to :squares_between }
 
   describe "algebraic notation" do
 
@@ -48,6 +49,10 @@ describe Board do
 
     it "should know when a notation refers to a spot on the board" do
       expect(@board.on_board?("A1")).to be_true
+    end
+
+    it "should know which squares are between two locations" do
+      expect(@board.squares_between("A1", "A5")).to eq(["A2", "A3", "A4"])
     end
 
     it "should know when pieces are in between two locations" do

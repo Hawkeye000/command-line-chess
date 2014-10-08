@@ -45,10 +45,15 @@ describe King do
         expect(@king.valid_move?("G1", @board))
       end
 
-      it "should move the king to the right correct location" do
+      it "should move the king to the correct location" do
         @board.move("E1", "G1")
         expect(@board.board["G1"]).to be_a(King)
         expect(@king.location).to eq("G1")
+      end
+
+      it "should move the rook to the correct location" do
+        @board.move("E1", "G1")
+        expect(@board.board["F1"]).to be_a(Rook)
       end
 
     end

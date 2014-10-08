@@ -67,8 +67,10 @@ end
 
 # check if a castling move was done by the king and move the complementary rook
 def castle_complement(piece, board)
-  if piece.moves == 0
+  if piece.moves == 1
     if piece.is_a?(King)
+      # pick up the king so the rook can move
+      board.rv_piece(piece.location)
       case piece.location
       when "C1"
         board.move("A1", "D1")
@@ -79,6 +81,8 @@ def castle_complement(piece, board)
       when "G8"
         board.move("H8", "F8")
       end
+      # replace the king after
+      board.set_piece(piece)
     end
   end
 end

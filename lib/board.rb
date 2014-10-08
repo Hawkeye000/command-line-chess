@@ -58,6 +58,9 @@ class Board
     if piece.move(loc_2, self)
       @board[loc_1] = " "
       self.set_piece(piece)
+      if piece.is_a?(King)
+        castle_complement(piece, self)
+      end
     else 
       return nil
     end

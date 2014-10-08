@@ -36,6 +36,10 @@ class Piece
     @color == "white" ? true : false
   end
 
+  def opponent?(piece)
+    piece.color == @color ? true : false
+  end
+
   def move(new_loc, board)
     if self.valid_move?(new_loc, board)
       @moves += 1

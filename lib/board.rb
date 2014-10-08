@@ -1,4 +1,5 @@
 Dir[File.dirname(__FILE__) + '/*'].each { |file| require file }
+require 'colorize'
 
 class Board
 
@@ -33,7 +34,7 @@ class Board
           elsif loc == "E1"
             King.new("white", loc)
           else
-            "empty"
+            " "
           end 
         @board[loc] = piece
       end
@@ -43,5 +44,23 @@ class Board
   def board
     @board
   end
+
+  def display
+    ("1".."8").to_a.reverse.each do |row|
+      print row + " "
+      ("A".."H").each do |col|
+        background =
+          if (col.ord + row.to_i).even?
+            :black
+          else
+            :red
+          end
+        print (@board["#{col}#{row}"].to_s + " ").colorize(:background => background)
+        end
+      print "\n"
+    end
+    puts "  " + ("A".."H").to_a.join(" ")
+  end
+
 
 end

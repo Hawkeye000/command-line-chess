@@ -2,11 +2,11 @@ require_relative '../lib/board.rb'
 
 describe Board do 
 
+  before { @board = Board.new }
+
   it { should respond_to :board }
 
   describe "algebraic notation" do
-
-    before { @board = Board.new }
 
     it "should respond to algebraic notation" do
       @board.board["A1"] = "Hello"
@@ -24,8 +24,6 @@ describe Board do
   end
 
   describe "setting up the game" do
-
-    before { @board = Board.new }
   
     it "should have a pawn on A2" do
       expect(@board.board["A2"]).to be_a(Pawn)
@@ -38,6 +36,7 @@ describe Board do
     it "should be empty on D4" do
       expect(@board.board["D4"]).to eq("empty")
     end
+
   end
 
 end

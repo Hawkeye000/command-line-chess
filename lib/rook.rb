@@ -15,4 +15,14 @@ class Rook < Piece
     super
   end
 
+  def valid_move?(new_loc)
+    x, y = new_loc - @location
+
+    if x == 0 && y.abs > 0
+      return true
+    elsif y == 0 && x.abs > 0
+      return true
+    end
+  end
+
 end

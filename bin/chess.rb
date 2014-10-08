@@ -16,8 +16,9 @@ loop do
 
   puts "#{player.color.capitalize} Player, enter your move:"
   locs = gets.chomp.split(" ")
-  player.move(locs[0], locs[1], @board)
 
-  player, opponent = opponent, player
+  unless player.move(locs[0], locs[1], @board).nil?
+    player, opponent = opponent, player
+  end
   
 end

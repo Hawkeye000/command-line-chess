@@ -5,8 +5,7 @@ describe Board do
   before { @board = Board.new }
 
   it { should respond_to :board }
-  it { should respond_to :piece_between }
-  it { should respond_to :squares_between }
+  it { should respond_to :piece_between? }
 
   describe "algebraic notation" do
 
@@ -51,8 +50,20 @@ describe Board do
       expect(@board.on_board?("A1")).to be_true
     end
 
-    it "should know which squares are between two locations" do
-      expect(@board.squares_between("A1", "A5")).to eq(["A2", "A3", "A4"])
+    describe "knowing which squares are between two locations" do
+
+      it "should be able to see the squares between on a veritcal move" do
+        expect(squares_between("A1", "A5")).to eq(["A2", "A3", "A4"])
+      end
+
+      it "should be able to see the squares between on a horizontal move" do
+        expect(squares_between("H8", "C8")).to eq(["G8", "F8", "E8", "D8"])
+      end
+
+      it "should be albe to see the squares between on a diagonal move" do
+        expect(squares_between("H8", "C3")).to eq(["G7", "F6", "E5", "D4"])
+      end
+
     end
 
     it "should know when pieces are in between two locations" do

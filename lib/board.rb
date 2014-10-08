@@ -66,6 +66,7 @@ class Board
   end
 
   def display
+    puts "  " + ("A".."H").to_a.join(" ")
     ("1".."8").to_a.reverse.each do |row|
       print row + " "
       ("A".."H").each do |col|
@@ -77,7 +78,7 @@ class Board
           end
         print (@board["#{col}#{row}"].to_s + " ").colorize(:background => background)
         end
-      print "\n"
+      print " #{row}\n"
     end
     puts "  " + ("A".."H").to_a.join(" ")
   end

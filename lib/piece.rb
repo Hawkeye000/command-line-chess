@@ -29,8 +29,14 @@ class Piece
     return new_loc if self.valid_move?
   end
 
-  def valid_move?(new_loc)
-    return false
+  def valid_move?(new_loc, board)
+    if board.piece_between?(@location, new_loc)
+      return false unless self.is_a?(Knight)
+    elsif board.board[new_loc].nil?
+      return false
+    else
+      return true
+    end
   end
 
 end

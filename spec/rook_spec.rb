@@ -12,18 +12,19 @@ describe Rook do
   end
 
   describe "valid moves" do
-    before { @rook = Rook.new("white", "A1") }
+    before { @rook = Rook.new("white", "A5") }
+    before { @board = Board.new }
 
     it "should be able to move vertically to any position" do
-      expect(@rook.valid_move?("A3")).to be_true
+      expect(@rook.valid_move?("A3", @board)).to be_true
     end
 
     it "should be able to move horizontally to any position" do
-      expect(@rook.valid_move?("H1")).to be_true
+      expect(@rook.valid_move?("H5", @board)).to be_true
     end
 
     it "should not be able to move diagonally" do
-      expect(@rook.valid_move?("B2")).to be_false
+      expect(@rook.valid_move?("B3", @board)).to be_false
     end
   end
 

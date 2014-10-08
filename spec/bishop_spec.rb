@@ -13,17 +13,18 @@ describe Bishop do
 
   describe "valid moves" do
     before { @bishop = Bishop.new("white", "D4") }
+    before { @board = Board.new }
 
     it "should not be able to move vertically to any position" do
-      expect(@bishop.valid_move?("A3")).to be_false
+      expect(@bishop.valid_move?("A3", @board)).to be_false
     end
 
     it "should not be able to move horizontally to any position" do
-      expect(@bishop.valid_move?("H1")).to be_false
+      expect(@bishop.valid_move?("D8", @board)).to be_false
     end
 
     it "should be able to move diagonally" do
-      expect(@bishop.valid_move?("B2")).to be_true
+      expect(@bishop.valid_move?("B2", @board)).to be_true
     end
   end
 

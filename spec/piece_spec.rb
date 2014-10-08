@@ -8,10 +8,7 @@ describe Piece do
 
   describe "validating moves" do
 
-    it "should be invalid if the piece is not specific" do
-      @piece = Piece.new
-      expect(@piece.valid_move?('A1')).to be_false
-    end
+    # see specific piece specs
 
   end
 

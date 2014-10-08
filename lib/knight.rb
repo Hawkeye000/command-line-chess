@@ -15,13 +15,13 @@ class Knight < Piece
     super
   end
 
-  def valid_move?(new_loc)
+  def valid_move?(new_loc, board)
     x, y = new_loc - @location
     if (x.abs == 2 && y.abs == 1) || (x.abs == 1 && y.abs == 2)
-      return true
     else
-      super
+      return false
     end
+    super
   end
 
 end

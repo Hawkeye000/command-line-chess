@@ -15,13 +15,13 @@ class Bishop < Piece
     super
   end
 
-  def valid_move?(new_loc)
+  def valid_move?(new_loc, board)
     x, y = new_loc - @location
-    if x == y
-      return true
+    if x.abs == y.abs
     else
-      super
+      return false
     end
+    super
   end
 
 end

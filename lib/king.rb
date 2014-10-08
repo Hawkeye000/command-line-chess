@@ -15,17 +15,13 @@ class King < Piece
     super
   end
 
-  def valid_move?(new_loc)
+  def valid_move?(new_loc, board)
     x, y = new_loc - @location
-    if x.abs == y.abs && y.abs == 1
-      return true
-    elsif y == 0 && x.abs == 1
-      return true
-    elsif x == 0 && y.abs == 1
-      return true
+    if x.abs <= 1 && y.abs <= 1
     else
-      super
+      return false
     end
+    super
   end
 
 end

@@ -28,32 +28,33 @@ describe Pawn do
 
   describe "valid moves" do
     before do 
-      @white_pawn = Pawn.new("white", "D2")
-      @black_pawn = Pawn.new("black", "D7")
+      @board = Board.new
+      @white_pawn = @board.board["D2"]
+      @black_pawn = @board.board["D7"]
     end
 
     it "should be able to move forward once ordinarility" do
-      expect(@white_pawn.valid_move?("D3")).to be_true
+      expect(@white_pawn.valid_move?("D3", @board)).to be_true
     end
 
     it "should be able to move forward once ordinarility" do
-      expect(@black_pawn.valid_move?("D6")).to be_true
+      expect(@black_pawn.valid_move?("D6", @board)).to be_true
     end
 
     it "should be able to move forward twice on the first move" do
-      expect(@white_pawn.valid_move?("D4")).to be_true
+      expect(@white_pawn.valid_move?("D4", @board)).to be_true
     end
 
     it "should not be able to move forward three times" do
-      expect(@white_pawn.valid_move?("D5")).to be_false
+      expect(@white_pawn.valid_move?("D5", @board)).to be_false
     end
 
     it "should not be able to move left or right" do
-      expect(@white_pawn.valid_move?("C2")).to be_false
+      expect(@white_pawn.valid_move?("C2", @board)).to be_false
     end
 
     it "should not be able to move backwards" do
-      expect(@white_pawn.valid_move?("D1")).to be_false
+      expect(@white_pawn.valid_move?("D1", @board)).to be_false
     end
 
     # write tests for taking pieces

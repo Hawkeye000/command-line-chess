@@ -84,5 +84,9 @@ def castle_complement(piece, board)
       # replace the king after
       board.set_piece(piece)
     end
-  end
+  end 
+end
+
+def relative_square(location, x, y)
+  (location[0].ord + x).chr + (location[1].ord + y).chr
 end

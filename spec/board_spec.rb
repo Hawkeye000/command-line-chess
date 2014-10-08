@@ -34,7 +34,7 @@ describe Board do
     end
 
     it "should be empty on D4" do
-      expect(@board.board["D4"]).to eq("empty")
+      expect(@board.board["D4"]).to eq(" ")
     end
 
   end

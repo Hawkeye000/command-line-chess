@@ -62,4 +62,13 @@ class Board
     puts "  " + ("A".."H").to_a.join(" ")
   end
 
+  def on_board?(loc)
+    !@board[loc].nil?
+  end
+
+  def piece_between(loc_1, loc_2)
+    
+
+  end
+
 end

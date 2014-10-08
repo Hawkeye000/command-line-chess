@@ -5,6 +5,7 @@ describe Board do
   before { @board = Board.new }
 
   it { should respond_to :board }
+  it { should respond_to :piece_between }
 
   describe "algebraic notation" do
 
@@ -37,6 +38,25 @@ describe Board do
       expect(@board.board["D4"]).to eq(" ")
     end
 
+  end
+
+  describe "making moves" do
+
+    it "should know when a notation refers to a spot off the board" do
+      expect(@board.on_board?("Z1")).to be_false
+    end
+
+    it "should know when a notation refers to a spot on the board" do
+      expect(@board.on_board?("A1")).to be_true
+    end
+
+    it "should know when pieces are in between two locations" do
+      expect(@board.piece_between?("A1", "A3")).to eq("A2")
+    end
+
+    it "should know when there are no pieces in between two locations" do
+      expect(@board.piece_between?("A2", "A4")).to be_false
+    end
   end
 
 end

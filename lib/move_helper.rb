@@ -40,3 +40,27 @@ def squares_between(loc_1, loc_2)
   squares_between.delete_at(-1)
   return squares_between
 end
+
+def check_castle(king, board, horiz_move)
+  if king.moves > 0 || horiz_move.abs != 2
+    return false
+  end
+
+  if king.black?
+    queen_rook = board.board["A8"]
+    king_rook = board.board["H8"]
+    return false if king.location != ["E8"]
+  elsif king.white?
+    queen_rook = board.board["A1"]
+    king_rook = board.board["H1"]
+    return false if king.location != ["E1"]
+  else 
+    return nil
+  end
+
+  if horiz_move < 0
+    queen_rook.is_a?(Rook) && queen_rook.moves == 0 ? true : false
+  elsif horiz_move > 0
+    king_rook.is_a?(Rook) && king_rook.moves == 0 ? true : false
+  end
+end

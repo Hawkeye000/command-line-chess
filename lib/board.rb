@@ -45,6 +45,10 @@ class Board
     @board[piece.location] = piece
   end
 
+  def rv_piece(location)
+    @board[location] = " " unless @board[location].nil?
+  end
+
   def board
     @board
   end

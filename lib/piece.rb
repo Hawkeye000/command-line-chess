@@ -8,6 +8,10 @@ class Piece
     @moves = 0
   end
 
+  def moves
+    @moves
+  end
+
   def color
     @color
   end
@@ -22,6 +26,14 @@ class Piece
 
   def to_s
     @icon
+  end
+
+  def black?
+    @color == "black" ? true : false
+  end
+
+  def white?
+    @color == "white" ? true : false
   end
 
   def move(new_loc, board)

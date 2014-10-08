@@ -30,6 +30,22 @@ describe King do
     it "should not be able to move more than one position" do
       expect(@king.valid_move?("B2", @board)).to be_false
     end
+
+    describe "castling" do
+
+      before do 
+        @board = Board.new
+        @king = @board.board["E1"]
+      end
+
+      it "should be valid to move twice horizontally on the first move\ 
+          when there is a rook on that side and no other pieces between" do
+        @board.rv_piece("F1")
+        @board.rv_piece("G1")
+        expect(@king.valid_move?("G1", @board))
+      end
+
+    end
   end
 
 end

@@ -46,6 +46,11 @@ describe Board do
     expect(@board.board["D4"]).to eq(@white_pawn)
   end
 
+  it "should be able to remove pieces from the board" do
+    @board.rv_piece("E5")
+    expect(@board.board["E5"]).to eq(" ")
+  end
+
   describe "making moves" do
 
     it "should know when a notation refers to a spot off the board" do

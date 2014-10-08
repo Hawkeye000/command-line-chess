@@ -22,7 +22,7 @@ class Pawn < Piece
     
     if x == 0 && y == 1
       return true
-    elsif x == 0 && y <= 2 && @moves == 0
+    elsif x == 0 && y == 2 && @moves == 0
       return true
     else
       super

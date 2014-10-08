@@ -28,9 +28,14 @@ describe Pawn do
 
   describe "valid moves" do
     before { @white_pawn = Pawn.new("white", "D2") }
+    before { @black_pawn = Pawn.new("black", "D7") }
 
     it "should be able to move forward once ordinarility" do
       expect(@white_pawn.valid_move?("D3")).to be_true
+    end
+
+    it "should be able to move forward once ordinarility" do
+      expect(@black_pawn.valid_move?("D6")).to be_true
     end
 
     it "should be able to move forward twice on the first move" do
@@ -40,6 +45,15 @@ describe Pawn do
     it "should not be able to move forward three times" do
       expect(@white_pawn.valid_move?("D5")).to be_false
     end
+
+    it "should not be able to move left or right" do
+      expect(@white_pawn.valid_move?("C2")).to be_false
+    end
+
+    it "should not be able to move backwards" do
+      expect(@white_pawn.valid_move?("D1")).to be_false
+    end
+
 
   end
 

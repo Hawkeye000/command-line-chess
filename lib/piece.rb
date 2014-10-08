@@ -37,7 +37,7 @@ class Piece
   end
 
   def opponent?(piece)
-    piece.color == @color ? true : false
+    piece.color == @color ? false : true
   end
 
   def move(new_loc, board)

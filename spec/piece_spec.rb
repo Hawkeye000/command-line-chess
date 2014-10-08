@@ -12,4 +12,11 @@ describe Piece do
 
   end
 
+  it "should know if another piece is an opponent" do
+    @black_piece = Piece.new("black", "A1")
+    @white_piece = Piece.new("white", "A2")
+    expect(@black_piece.opponent?(@white_piece)).to be_true
+    expect(@black_piece.opponent?(@black_piece)).to be_false
+  end
+
 end

@@ -59,4 +59,19 @@ describe King do
     end
   end
 
+  describe "in_check?" do
+
+    before do
+      @board = Board.new
+      @black_king = @board.board["E8"]
+    end
+
+    it "should know when it is in check" do
+      @board.move("C2", "C3")
+      @board.move("D7", "D6")
+      @board.move("D1", "A4")
+      expect(@black_king.check?(@board)).to be_true
+    end
+  end
+
 end

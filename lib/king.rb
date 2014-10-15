@@ -25,4 +25,7 @@ class King < Piece
     super(new_loc, board)
   end
 
+  def check?(board)
+  end
+
 end

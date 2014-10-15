@@ -53,7 +53,7 @@ describe King do
 
       it "should move the rook to the correct location" do
         @board.move("E1", "G1")
-        expect(@board.board["F1"]).to be_a(Rook)
+        expect(@board["F1"]).to be_a(Rook)
       end
 
     end
@@ -63,7 +63,7 @@ describe King do
 
     before do
       @board = Board.new
-      @black_king = @board.board["E8"]
+      @black_king = @board["E8"]
     end
 
     it "should know when it is in check" do

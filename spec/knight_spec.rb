@@ -28,7 +28,7 @@ describe Knight do
     end
 
     it "should be able to jump pieces" do
-      expect(@board.board["B1"].valid_move?("C3", @board)).to be_true
+      expect(@board["B1"].valid_move?("C3", @board)).to be_true
     end
   end
 

@@ -22,7 +22,7 @@ class Pawn < Piece
     
     if x == 0 && y == 1
     elsif x == 0 && y == 2 && @moves == 0
-    elsif y == 1 && x.abs == 1 && board.board[new_loc].opponent?(self)
+    elsif y == 1 && x.abs == 1 && board[new_loc].opponent?(self)
     elsif en_passant?(new_loc, board)
     else
       return false
@@ -35,7 +35,7 @@ class Pawn < Piece
     x, y = new_loc - @location
     passing_square = relative_square(@location, x, 0)
 
-    passed_piece = board.board[passing_square]
+    passed_piece = board[passing_square]
     # conditions for en passant, must be opposing pawn that moved forward twice to 
     # the square it would have occupied if it was only moved one square
     if passed_piece.is_a?(Pawn) && self.opponent?(passed_piece) && passed_piece.moves == 1

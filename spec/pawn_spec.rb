@@ -29,8 +29,8 @@ describe Pawn do
   describe "valid moves" do
     before do 
       @board = Board.new
-      @white_pawn = @board.board["D2"]
-      @black_pawn = @board.board["D7"]
+      @white_pawn = @board["D2"]
+      @black_pawn = @board["D7"]
     end
 
     it "should be able to move forward once ordinarility" do
@@ -67,7 +67,7 @@ describe Pawn do
 
     it "should be able to move diagonally to take other pieces" do
       @board = Board.new
-      @white_pawn = @board.board["D2"]
+      @white_pawn = @board["D2"]
       @black_pawn = Pawn.new("black", "C3")
       @board.set_piece(@black_pawn)
       expect(@white_pawn.valid_move?("C3", @board)).to be_true
@@ -75,13 +75,13 @@ describe Pawn do
    
     it "should be able to capture pieces en passant (in passing)" do
       @board = Board.new
-      @white_pawn = @board.board["D2"]
-      @black_pawn = @board.board["E7"]
+      @white_pawn = @board["D2"]
+      @black_pawn = @board["E7"]
       @board.move("D2", "D4")
       @board.move("D4", "D5")
       @board.move("E7", "E5")
       @board.move("D5", "E6")
-      expect(@board.board["E5"]).to eq(" ")
+      expect(@board["E5"]).to eq(" ")
     end
   end
 

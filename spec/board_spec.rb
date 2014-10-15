@@ -10,16 +10,15 @@ describe Board do
   describe "algebraic notation" do
 
     it "should respond to algebraic notation" do
-      @board.board["A1"] = "Hello"
-      expect(@board.board["A1"]).to eq("Hello")
+      expect(@board["A1"]).to be_a(Rook)
     end
 
     it "should return nil if the hash is out of bounds" do
-      expect(@board.board["Z8"]).to be nil
+      expect(@board["Z8"]).to be nil
     end
 
     it "should not be nil if the hash is in bounds" do
-      expect(@board.board["A1"]).to_not be nil
+      expect(@board["A1"]).to_not be nil
     end
     
   end
@@ -27,15 +26,15 @@ describe Board do
   describe "setting up the game" do
   
     it "should have a pawn on A2" do
-      expect(@board.board["A2"]).to be_a(Pawn)
+      expect(@board["A2"]).to be_a(Pawn)
     end
 
     it "should have a queen on D8" do
-      expect(@board.board["D8"]).to be_a(Queen)
+      expect(@board["D8"]).to be_a(Queen)
     end
 
     it "should be empty on D4" do
-      expect(@board.board["D4"]).to eq(" ")
+      expect(@board["D4"]).to eq(" ")
     end
 
   end
@@ -43,12 +42,12 @@ describe Board do
   it "should be able to set pieces on the board" do
     @white_pawn = Pawn.new("white", "D4")
     @board.set_piece(@white_pawn)
-    expect(@board.board["D4"]).to eq(@white_pawn)
+    expect(@board["D4"]).to eq(@white_pawn)
   end
 
   it "should be able to remove pieces from the board" do
     @board.rv_piece("E5")
-    expect(@board.board["E5"]).to eq(" ")
+    expect(@board["E5"]).to eq(" ")
   end
 
   describe "making moves" do
@@ -90,17 +89,17 @@ describe Board do
       before { @board.move("D2", "D4") }
 
       it "should be able to move a white pawn two spaces forward" do
-        expect(@board.board["D4"]).to be_a(Pawn)
+        expect(@board["D4"]).to be_a(Pawn)
       end
 
       it "should not be able to move a white pawn two spaces on the next turn" do
         @board.move("D4", "D6")
-        expect(@board.board["D6"]).to eq(" ")
+        expect(@board["D6"]).to eq(" ")
       end
 
       it "should be able to move a white pawn one space on the next turn" do
         @board.move("D4", "D5")
-        expect(@board.board["D5"]).to be_a(Pawn)
+        expect(@board["D5"]).to be_a(Pawn)
       end
     end
 
@@ -108,12 +107,12 @@ describe Board do
 
       it "should be able to jump the front row of pawns" do
         @board.move("B1", "A3")
-        expect(@board.board["A3"]).to be_a(Knight)
+        expect(@board["A3"]).to be_a(Knight)
       end
 
       it "should not be able to take its own color" do
         @board.move("B1", "D2")
-        expect(@board.board["D2"]).to be_a(Pawn)
+        expect(@board["D2"]).to be_a(Pawn)
       end
 
       describe "taking an opposing color" do
@@ -121,7 +120,7 @@ describe Board do
           @board.move("B1", "A3")
           @board.move("A3", "B5")
           @board.move("B5", "C7")
-          @knight = @board.board["C7"]
+          @knight = @board["C7"]
         end
 
         it "should have a white piece on the square" do 

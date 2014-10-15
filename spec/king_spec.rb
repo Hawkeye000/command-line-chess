@@ -53,10 +53,28 @@ describe King do
 
       it "should move the rook to the correct location" do
         @board.move("E1", "G1")
-        expect(@board.board["F1"]).to be_a(Rook)
+        expect(@board["F1"]).to be_a(Rook)
       end
 
     end
   end
 
+<<<<<<< Updated upstream
+=======
+  describe "in_check?" do
+
+    before do
+      @board = Board.new
+      @black_king = @board["E8"]
+    end
+
+    it "should know when it is in check" do
+      @board.move("C2", "C3")
+      @board.move("D7", "D6")
+      @board.move("D1", "A4")
+      expect(@black_king.check?(@board)).to be_true
+    end
+  end
+
+>>>>>>> Stashed changes
 end

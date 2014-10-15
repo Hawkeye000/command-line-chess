@@ -15,7 +15,7 @@ class Player
 
     loc_1.upcase!
     loc_2.upcase!
-    if board.board[loc_1].color == @color
+    if board[loc_1].color == @color
       board.move(loc_1, loc_2)
     end
     

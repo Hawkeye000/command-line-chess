@@ -56,12 +56,12 @@ def check_castle(king, board, horiz_move)
 
   if king.black?
     return false unless king.location == "E8"
-    queen_rook = board.board["A8"]
-    king_rook = board.board["H8"]
+    queen_rook = board["A8"]
+    king_rook = board["H8"]
   elsif king.white?
     return false unless king.location == "E1"
-    queen_rook = board.board["A1"]
-    king_rook = board.board["H1"]
+    queen_rook = board["A1"]
+    king_rook = board["H1"]
   else 
     return nil
   end

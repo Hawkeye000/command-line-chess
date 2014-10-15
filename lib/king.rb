@@ -26,6 +26,13 @@ class King < Piece
   end
 
   def check?(board)
+    board.each do |square, piece|
+      if piece.opponent?(self) && piece.valid_move?(@location, board)
+        true
+      else
+        false
+      end
+    end
   end
 
 end

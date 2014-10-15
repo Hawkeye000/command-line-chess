@@ -58,6 +58,10 @@ class Board
     @board[string]
   end
 
+  def each(&block)
+    @board.each(&block)
+  end
+
   def move(loc_1, loc_2)
     piece = @board[loc_1]
     if piece.move(loc_2, self)

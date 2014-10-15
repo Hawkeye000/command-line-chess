@@ -35,7 +35,7 @@ describe King do
 
       before do 
         @board = Board.new
-        @king = @board.board["E1"]
+        @king = @board["E1"]
         @board.rv_piece("F1")
         @board.rv_piece("G1")
       end
@@ -47,7 +47,7 @@ describe King do
 
       it "should move the king to the correct location" do
         @board.move("E1", "G1")
-        expect(@board.board["G1"]).to be_a(King)
+        expect(@board["G1"]).to be_a(King)
         expect(@king.location).to eq("G1")
       end
 

@@ -54,6 +54,10 @@ class Board
     @board
   end
 
+  def [](string)
+    @board[string]
+  end
+
   def move(loc_1, loc_2)
     piece = @board[loc_1]
     if piece.move(loc_2, self)

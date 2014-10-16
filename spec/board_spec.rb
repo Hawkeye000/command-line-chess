@@ -77,12 +77,24 @@ describe Board do
 
     end
 
-    it "should know when pieces are in between two locations" do
-      expect(@board.piece_between?("A1", "A3")).to be_true
+    describe "return value" do
+      it "should return the square a piece moved to" do
+        expect(@board.move("B8", "A6")).to eq("A6")
+      end
+
+      it "should return nil if the move is bad" do
+        expect(@board.move("B8", "B6")).to be_nil
+      end
     end
 
-    it "should know when there are no pieces in between two locations" do
-      expect(@board.piece_between?("A2", "A4")).to be_false
+    describe "piece between" do
+      it "should know when pieces are in between two locations" do
+        expect(@board.piece_between?("A1", "A3")).to be_true
+      end
+
+      it "should know when there are no pieces in between two locations" do
+        expect(@board.piece_between?("A2", "A4")).to be_false
+      end
     end
 
     describe "for white pawn" do
@@ -128,7 +140,7 @@ describe Board do
           expect(@knight.color).to eq("white")
         end
         
-        it "shoulbe be a knight" do
+        it "should be be a knight" do
           expect(@knight).to be_a(Knight)
         end
       end

@@ -68,6 +68,7 @@ class Board
       @board[loc_1] = " "
       self.set_piece(piece)
       castle_complement(piece, self)
+      return loc_2
     else 
       return nil
     end

@@ -35,4 +35,10 @@ class King < Piece
     end
   end
 
+  def will_be_in_check?(loc_1, loc_2, board)
+    ghost_board = board.clone
+    ghost_board.move(loc_1, loc_2)
+    self.check?(ghost_board)
+  end
+
 end

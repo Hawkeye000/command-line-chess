@@ -72,6 +72,19 @@ describe King do
       @board.move("D1", "A4")
       expect(@black_king.check?(@board)).to be_true
     end
+
+    it "should know when it will be in check" do
+      @board.move("E2", "E3")
+      @board.move("F1", "B5")
+      expect(@black_king.will_be_in_check?("D7", "D6", @board)).to be_true
+    end
+
+    it "should not let the player make a move that puts the king in check" do
+      @board.move("E2", "E3")
+      @board.move("F1", "B5")
+      expect(@board.move("D7", "D6")).to be_nil
+    end
+
   end
 
 end

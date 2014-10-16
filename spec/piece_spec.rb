@@ -19,4 +19,10 @@ describe Piece do
     expect(@black_piece.opponent?(@black_piece)).to be_false
   end
 
+  it "should know who its fearless leader (king) is" do
+    @board = Board.new
+    @piece = @board["A1"]
+    expect(@piece.my_king(@board)).to be_a(King)
+  end
+
 end

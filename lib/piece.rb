@@ -49,6 +49,15 @@ class Piece
     end
   end
 
+  def my_king(board)
+    # tells a player where his beloved monarch is
+    board.board.select do |location, piece| 
+      if piece.is_a?(King) && piece.color == self.color
+        return piece
+      end
+    end
+  end
+
   def valid_move?(new_loc, board)
     if board.piece_between?(@location, new_loc)
       return false unless self.is_a?(Knight)

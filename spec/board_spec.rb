@@ -82,8 +82,8 @@ describe Board do
         expect(@board.move("B8", "A6")).to eq("A6")
       end
 
-      it "should return nil if the move is bad" do
-        expect(@board.move("B8", "B6")).to be_nil
+      it "should not return the square if the move is bad" do
+        expect(@board.move("B8", "B6")).to_not eq("B6")
       end
     end
 

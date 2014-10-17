@@ -28,16 +28,18 @@ class King < Piece
   def check?(board)
     board.each do |square, piece|
       if piece.opponent?(self) && piece.valid_move?(@location, board)
-        true
-      else
-        false
+        return true
       end
     end
+    return false
   end
 
   def will_be_in_check?(loc_1, loc_2, board)
     ghost_board = board.clone
-    ghost_board.move(loc_1, loc_2)
+    piece = board[loc_1]
+    ghost_board.rv_piece(loc_1)
+    piece.location = loc_2
+    ghost_board.set_piece(piece)
     self.check?(ghost_board)
   end
 

@@ -14,7 +14,15 @@ class String
   end
 
   def opponent?(o = nil)
-    false
+    nil
+  end
+
+  def location
+    nil
+  end
+
+  def location=(o = nil)
+    nil
   end
 
 end
@@ -81,14 +89,22 @@ def castle_complement(piece, board)
       board.rv_piece(piece.location)
       case piece.location
       when "C1"
-        board.move("A1", "D1")
+        rook = board["A1"]
+        rook_new_loc = "D1"
       when "G1"
-        board.move("H1", "F1")
+        rook = board["H1"]
+        rook_new_loc = "F1"
       when "C8"
-        board.move("A8", "D8")
+        rook = board["A8"]
+        rook_new_loc = "D8"
       when "G8"
-        board.move("H8", "F8")
+        rook = board["H8"]
+        rook_new_loc = "F8"
       end
+      # move the rook
+      board.rv_piece(rook.location)
+      rook.location = rook_new_loc
+      board.set_piece(rook)
       # replace the king after
       board.set_piece(piece)
     end

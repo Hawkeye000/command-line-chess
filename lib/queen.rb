@@ -17,7 +17,7 @@ class Queen < Piece
 
   def valid_move?(new_loc, board)
     x, y = new_loc - @location
-    if x == y
+    if x.abs == y.abs
     elsif x == 0 && y.abs > 0
     elsif y == 0 && x.abs > 0
     else

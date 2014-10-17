@@ -56,6 +56,14 @@ describe King do
         expect(@board["F1"]).to be_a(Rook)
       end
 
+      it "should not be able to castle if it is in check" do
+        @board.move("E7", "E6")
+        @board.move("D2", "D3")
+        @board.move("F8", "B4")
+        # king is now in check
+        expect(@king.valid_move?("G1", @board)).to be_false
+      end
+
     end
   end
 

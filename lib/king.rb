@@ -18,7 +18,7 @@ class King < Piece
   def valid_move?(new_loc, board)
     x, y = new_loc - @location
     if x.abs <= 1 && y.abs <= 1
-    elsif check_castle(self, board, x)
+    elsif check_castle(self, board, x) && !self.check?(board)
     else
       return false
     end

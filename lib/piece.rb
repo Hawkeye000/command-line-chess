@@ -20,6 +20,10 @@ class Piece
     @location
   end
 
+  def location=(location)
+    @location = location
+  end
+
   def icon
     @icon
   end
@@ -51,7 +55,7 @@ class Piece
 
   def my_king(board)
     # tells a player where his beloved monarch is
-    board.board.select do |location, piece| 
+    board.board.each do |location, piece| 
       if piece.is_a?(King) && piece.color == self.color
         return piece
       end

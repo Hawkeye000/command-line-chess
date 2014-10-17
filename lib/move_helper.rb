@@ -25,6 +25,10 @@ class String
     nil
   end
 
+  def move(o = nil, p = nil)
+    nil
+  end
+
 end
 
 def squares_between(loc_1, loc_2)
@@ -79,7 +83,8 @@ def check_castle(king, board, horiz_move)
   # check if the square the king passes through is under attack
   # place a "test king" and see if he is in check
   test_king = King.new(king.color, attack)
-  # need to remove the old king
+
+  # need to remove the old king to place a test piece
   board.rv_piece(king.location)
   if board[attack] == " "
     board.set_piece(test_king)

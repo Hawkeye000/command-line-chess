@@ -64,6 +64,22 @@ describe King do
         expect(@king.valid_move?("G1", @board)).to be_false
       end
 
+      it "should not be able to castle into check" do
+        @board.move("E7", "E6")
+        @board.move("D8", "G5")
+        @board.move("G5", "G2")
+        expect(@king.valid_move?("G1", @board)).to be_false
+      end
+
+      it "should not be able to pass through a square being attacked" do
+        @board.move("E7", "E6")
+        @board.move("D8", "F6")
+        @board.move("F2", "F3")
+        @board.move("F6", "F3")
+        expect(@king.check?(@board)).to be_false
+        expect(@king.valid_move?("G1", @board)).to be_false
+      end
+
     end
   end
 

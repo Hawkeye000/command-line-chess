@@ -66,18 +66,40 @@ def check_castle(king, board, horiz_move)
     return false unless king.location == "E8"
     queen_rook = board.board["A8"]
     king_rook = board.board["H8"]
+    horiz_move < 0 ? attack = "D8" : attack = "F8"
   elsif king.white?
     return false unless king.location == "E1"
     queen_rook = board.board["A1"]
     king_rook = board.board["H1"]
+    horiz_move < 0 ? attack = "D1" : attack = "F1"
   else 
     return nil
   end
 
+  # check if the square the king passes through is under attack
+  # place a "test king" and see if he is in check
+  test_king = King.new(king.color, attack)
+  # need to remove the old king
+  board.rv_piece(king.location)
+  if board[attack] == " "
+    board.set_piece(test_king)
+  else
+    board.set_piece(king)
+    return false
+  end
+
+  if test_king.check?(board)
+    board.set_piece(king)
+    return false
+  end
+  
+  board.rv_piece(attack)
+  board.set_piece(king)
+
   if horiz_move < 0
-    queen_rook.is_a?(Rook) && queen_rook.moves == 0 ? true : false
+    queen_rook.is_a?(Rook) && queen_rook.moves == 0 ? true : (return false)
   elsif horiz_move > 0
-    king_rook.is_a?(Rook) && king_rook.moves == 0 ? true : false
+    king_rook.is_a?(Rook) && king_rook.moves == 0 ? true : (return false)
   end
 end
 

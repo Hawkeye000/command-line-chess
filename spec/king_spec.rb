@@ -108,12 +108,6 @@ describe King do
       expect(@black_king.will_be_in_check?("D7", "D6", @board)).to be_true
     end
 
-    it "should not let the player make a move that puts the king in check" do
-      @board.move("E2", "E3")
-      @board.move("F1", "B5")
-      expect(@board.move("D7", "D6")).to_not eq("D6")
-    end
-
     it "should not be in checkmate if the king is not in check" do
       expect(@white_king.checkmate?(@board)).to be_false
     end

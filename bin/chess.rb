@@ -18,7 +18,7 @@ loop do
   if player.king(@board).checkmate?(@board)
     puts "#{player.color.capitalize} Player, you are in CHECKMATE"
     puts "#{opponent.color.capitalize} Player WINS"
-    break
+    # break
   elsif player.king(@board).check?(@board)
     puts "#{player.color.capitalize} Player, you are in CHECK"
   end

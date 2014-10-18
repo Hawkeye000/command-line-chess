@@ -63,6 +63,7 @@ class Board
   end
 
   def move(loc_1, loc_2)
+    return nil if loc_1.nil? || loc_2.nil?
     piece = @board[loc_1]
     if piece.move(loc_2, self)
       @board[loc_1] = " "
@@ -97,6 +98,7 @@ class Board
   end
 
   def piece_between?(loc_1, loc_2)
+    return false if loc_1 == loc_2
     squares_between(loc_1, loc_2).any? { |square| @board[square] != " " }
   end
 

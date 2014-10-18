@@ -88,6 +88,7 @@ describe King do
     before do
       @board = Board.new
       @black_king = @board["E8"]
+      @white_king = @board["E1"]
     end
 
     it "should know when it is in check" do
@@ -113,6 +114,17 @@ describe King do
       expect(@board.move("D7", "D6")).to_not eq("D6")
     end
 
+    it "should not be in checkmate if the king is not in check" do
+      expect(@white_king.checkmate?(@board)).to be_false
+    end
+
+    it "should know when a check is a checkmate" do
+      @board.move("F2", "F3")
+      @board.move("E7", "E5")
+      @board.move("G2", "G4")
+      @board.move("D8", "H4")
+      expect(@white_king.checkmate?(@board)).to be_true
+    end
   end
 
 end

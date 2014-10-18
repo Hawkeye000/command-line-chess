@@ -34,6 +34,10 @@ end
 def squares_between(loc_1, loc_2)
   x, y = loc_2 - loc_1
 
+  if x == y && y == 0
+    return nil
+  end
+
   if x > 0 
     x_range = (loc_1[0]..loc_2[0]).to_a
   elsif x < 0

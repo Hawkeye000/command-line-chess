@@ -33,15 +33,19 @@ class Piece
   end
 
   def black?
-    @color == "black" ? true : false
+    @color == "black"
   end
 
   def white?
-    @color == "white" ? true : false
+    @color == "white"
   end
 
   def opponent?(piece)
-    piece.color == @color ? false : true
+    piece.color != @color
+  end
+
+  def friend?(piece)
+    piece.color == @color
   end
 
   def move(new_loc, board)

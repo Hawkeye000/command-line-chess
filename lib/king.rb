@@ -26,7 +26,7 @@ class King < Piece
   end
 
   def check?(board)
-    board.each do |square, piece|
+    board.each do |loc, piece|
       if piece.opponent?(self) && piece.valid_move?(@location, board)
         return true
       end
@@ -34,13 +34,34 @@ class King < Piece
     return false
   end
 
+  def checkmate?(board)
+    # the king must be in check to be in checkmate
+    return false unless self.check?(board)
+    kings_men = []
+    squares = []
+
+    # check all possible moves and see if the king is still in check
+    board.each do |loc, piece| 
+      kings_men << piece if piece.color == self.color
+      squares << loc
+    end
+
+    kings_men.each do |piece|
+      squares.each do |new_loc|
+        return false unless self.will_be_in_check?(piece.location, new_loc, board)
+      end
+    end
+
+    return true
+  end
+
   def will_be_in_check?(loc_1, loc_2, board)
-    ghost_board = board.clone
-    piece = board[loc_1]
-    ghost_board.rv_piece(loc_1)
+    test_board = board.dup
+    piece = test_board[loc_1].dup
+    test_board.rv_piece(loc_1)
     piece.location = loc_2
-    ghost_board.set_piece(piece)
-    self.check?(ghost_board)
+    test_board.set_piece(piece)
+    self.check?(test_board)
   end
 
 end

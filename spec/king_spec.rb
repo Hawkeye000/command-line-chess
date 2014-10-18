@@ -125,6 +125,14 @@ describe King do
       @board.move("D8", "H4")
       expect(@white_king.checkmate?(@board)).to be_true
     end
+
+    it "should know when a check is not a checkmate" do
+      @board.move("F2", "F3")
+      @board.move("E7", "E5")
+      @board.move("G1", "H3")
+      @board.move("D8", "H4")
+      expect(@white_king.checkmate?(@board)).to be_false
+    end
   end
 
 end

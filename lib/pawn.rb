@@ -46,8 +46,4 @@ class Pawn < Piece
     end
   end
 
-  def can_promote?
-    (@color == "white" && self.rank == "8") || (@color == "black" && self.rank == "1")
-  end
-
 end

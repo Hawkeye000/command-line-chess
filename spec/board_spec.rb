@@ -158,6 +158,42 @@ describe Board do
     end
   end
 
+  describe "pawn promotion" do
+
+    before do
+      @board = Board.new
+      @promote = Pawn.new("white", "A8")
+      @board.set_piece(@promote)
+    end
+
+    it "should be able to promote to a queen" do
+      @board.promote("A8", Queen)
+      expect(@board["A8"]).to be_a(Queen)
+    end
+
+    it "should be able to promote to a Knight" do
+      @board.promote("A8", Knight)
+      expect(@board["A8"]).to be_a(Knight)
+    end
+
+    it "should be able to promote to a Bishop" do
+      @board.promote("A8", Bishop)
+      expect(@board["A8"]).to be_a(Bishop)
+    end
+
+    it "should be able to promote to a Rook" do
+      @board.promote("A8", Rook)
+      expect(@board["A8"]).to be_a(Rook)
+    end
+
+    it "should not be able to promote to a King" do
+      @board.promote("A8", King)
+      expect(@board["A8"]).to_not be_a(King)
+    end
+
+  end
+
+
   it "should be able to clear the board" do
     @board.clear
     pieces = @board.board.select{ |square, piece| piece.is_a?(Piece)}

@@ -66,6 +66,21 @@ class Board
     @board.each { |square, piece| @board[square] = " " }
   end
 
+  def promote(loc, new_piece)
+    piece = board[loc]
+    if piece.can_promote?
+      if new_piece == Queen || new_piece == Rook \
+          || new_piece == Bishop || new_piece == Knight
+        promoted = new_piece.new(piece.color, loc)
+        promoted.moves = piece.moves
+        self.rv_piece(loc)
+        self.set_piece(promoted)
+      end
+    else
+      nil
+    end
+  end
+
   def move(loc_1, loc_2)
     return nil if loc_1.nil? || loc_2.nil?
     piece = @board[loc_1]

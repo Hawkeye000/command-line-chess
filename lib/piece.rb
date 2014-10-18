@@ -12,8 +12,8 @@ class Piece
     @moves
   end
 
-  def moves=(o)
-    @moves = o
+  def moves=(moves)
+    @moves = moves
   end
 
   def color
@@ -67,6 +67,10 @@ class Piece
     else 
       return nil
     end
+  end
+
+  def can_promote?
+    (@color == "white" && self.rank == "8") || (@color == "black" && self.rank == "1") && self.is_a?(Pawn)
   end
 
   def my_king(board)

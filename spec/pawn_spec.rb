@@ -93,4 +93,16 @@ describe Pawn do
     end
   end
 
+  describe "upgrading pawns" do
+
+    before do 
+      @board = Board.new
+      @white_pawn = Pawn.new("white", "A8")
+      @board.set_piece(@white_pawn)
+    end
+    
+    it "should be able to promote when on " do
+      expect(@white_pawn.can_promote?).to be_true
+    end
+  end
 end

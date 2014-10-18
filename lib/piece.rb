@@ -24,6 +24,14 @@ class Piece
     @location
   end
 
+  def file
+    @location[0]
+  end
+
+  def rank
+    @location[1]
+  end
+
   def location=(location)
     @location = location
   end

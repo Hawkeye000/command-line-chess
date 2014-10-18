@@ -25,4 +25,19 @@ describe Piece do
     expect(@piece.my_king(@board)).to be_a(King)
   end
 
+  describe "rank and file" do
+    before do
+      @board = Board.new
+      @piece = @board["A1"]
+    end
+
+    it "should know what the piece's file is" do
+      expect(@piece.file).to eq("A")
+    end
+
+    it "should know what the piece's rank is" do
+      expect(@piece.rank).to eq("1")
+    end
+  end
+
 end

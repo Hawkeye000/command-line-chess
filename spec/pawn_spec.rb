@@ -45,6 +45,14 @@ describe Pawn do
       expect(@white_pawn.valid_move?("D4", @board)).to be_true
     end
 
+    it "should not be able to move forward when the square is occupied" do
+      @opponent = Pawn.new("black", "D3")
+      @board.set_piece(@opponent)
+      expect(@white_pawn.valid_move?("D3", @board)).to be_false
+      expect(@white_pawn.valid_move?("D4", @board)).to be_false
+    end
+
+
     it "should not be able to move forward three times" do
       expect(@white_pawn.valid_move?("D5", @board)).to be_false
     end

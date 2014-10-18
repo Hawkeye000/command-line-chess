@@ -16,7 +16,7 @@ class Player
     loc_1.upcase!
     loc_2.upcase!
     if board.board[loc_1].color == @color
-      board.move(loc_1, loc_2)
+      board.move(loc_1, loc_2) unless self.king(board).will_be_in_check?(loc_1, loc_2, board)
     end
     
   end

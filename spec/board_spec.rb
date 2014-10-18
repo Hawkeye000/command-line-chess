@@ -145,6 +145,17 @@ describe Board do
         end
       end
     end
+
+    describe "undoing moves" do
+
+      it "should be able to undo moves" do
+        @board.move("D2", "D4")
+        @board.undo_last_move
+        expect(@board["D2"]).to be_a(Pawn)
+        expect(@board["D2"].moves).to eq(0)
+      end
+      
+    end
   end
 
   it "should be able to clear the board" do

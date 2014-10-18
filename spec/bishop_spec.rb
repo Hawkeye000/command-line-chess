@@ -24,7 +24,7 @@ describe Bishop do
     end
 
     it "should be able to move diagonally" do
-      expect(@bishop.valid_move?("B2", @board)).to be_true
+      expect(@bishop.valid_move?("C3", @board)).to be_true
     end
   end
 

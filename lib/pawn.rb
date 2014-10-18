@@ -20,8 +20,8 @@ class Pawn < Piece
 
     y *= -1 if @color == "black"
     
-    if x == 0 && y == 1
-    elsif x == 0 && y == 2 && @moves == 0
+    if x == 0 && y == 1 && board[new_loc] == " "
+    elsif x == 0 && y == 2 && @moves == 0 && board[new_loc] == " "
     elsif y == 1 && x.abs == 1 && board.board[new_loc].opponent?(self)
     elsif en_passant?(new_loc, board)
     else

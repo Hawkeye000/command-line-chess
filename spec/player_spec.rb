@@ -34,5 +34,14 @@ describe Player do
     expect(@b_king.location).to eq("E8")
   end
 
+  it "should not let the player make a move that puts the king in check" do
+    @board = Board.new
+    @w_player = Player.new("white")
+    @b_player = Player.new("black")
+    @w_player.move("E2", "E3", @board)
+    @w_player.move("F1", "B5", @board)
+    expect(@b_player.move("D7", "D6", @board)).to_not eq("D6")
+  end
+
 
 end

@@ -73,11 +73,21 @@ class Board
       @board[loc_1] = " "
       self.set_piece(piece)
       castle_complement(piece, self)
+      @last_move = [loc_1, loc_2, piece]
       return loc_2
     else 
       return nil
     end
   end
+
+  def undo_last_move
+    piece = @last_move[2]
+    piece.moves = piece.moves - 1
+    piece.location = @last_move[0]
+    self.rv_piece(@last_move[1])
+    self.set_piece(piece)
+  end
+
 
   def display
     puts "  " + ("A".."H").to_a.join(" ")

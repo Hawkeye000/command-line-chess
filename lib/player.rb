@@ -20,4 +20,10 @@ class Player
     end
     
   end
+
+  def king(board)
+    king = board.board.select do |square, piece|
+      return piece if piece.color == self.color && piece.class == King
+    end
+  end
 end

@@ -14,11 +14,21 @@ loop do
 
   @board.display
 
+  # look for check and checkmate conditions
+  if player.king(@board).checkmate?(@board)
+    puts "#{player.color.capitalize} Player, you are in CHECKMATE"
+    puts "#{opponent.color.capitalize} Player WINS"
+    break
+  elsif player.king(@board).check?(@board)
+    puts "#{player.color.capitalize} Player, you are in CHECK"
+  end
+
   puts "#{player.color.capitalize} Player, enter your move:"
   locs = gets.chomp.split(" ")
 
+  # handle special cases
   case locs[0]
-  when "exit", "quit", "q"
+  when "exit", "quit"
     break
   end
 

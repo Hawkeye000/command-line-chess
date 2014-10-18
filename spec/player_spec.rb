@@ -22,5 +22,17 @@ describe Player do
     end
   end
 
+  it "should know which piece is their king" do
+    @board = Board.new
+    @w_player = Player.new("white")
+    @b_player = Player.new("black")
+    @w_king = @w_player.king(@board)
+    @b_king = @b_player.king(@board)
+    expect(@w_king).to be_a(King)
+    expect(@b_king).to be_a(King)
+    expect(@w_king.location).to eq("E1")
+    expect(@b_king.location).to eq("E8")
+  end
+
 
 end

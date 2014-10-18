@@ -24,7 +24,7 @@ describe Queen do
     end
 
     it "should be able to move diagonally" do
-      expect(@queen.valid_move?("B2", @board)).to be_true
+      expect(@queen.valid_move?("C3", @board)).to be_true
       expect(@queen.valid_move?("E3", @board)).to be_true
       expect(@queen.valid_move?("E5", @board)).to be_true
       expect(@queen.valid_move?("E3", @board)).to be_true

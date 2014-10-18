@@ -116,8 +116,7 @@ end
 def castle_complement(piece, board)
   if piece.moves == 1
     if piece.is_a?(King)
-      # pick up the king so the rook can move
-      board.rv_piece(piece.location)
+      
       case piece.location
       when "C1"
         rook = board["A1"]
@@ -132,12 +131,20 @@ def castle_complement(piece, board)
         rook = board["H8"]
         rook_new_loc = "F8"
       end
-      # move the rook
-      board.rv_piece(rook.location)
-      rook.location = rook_new_loc
-      board.set_piece(rook)
-      # replace the king after
-      board.set_piece(piece)
+
+      if rook.is_a?(Rook)
+        # pick up the king so the rook can move
+        board.rv_piece(piece.location)
+
+        # move the rook
+        
+        board.rv_piece(rook.location)
+        rook.location = rook_new_loc
+        board.set_piece(rook)
+
+        # replace the king after
+        board.set_piece(piece)
+      end
     end
   end 
 end

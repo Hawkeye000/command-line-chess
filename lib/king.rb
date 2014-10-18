@@ -36,7 +36,10 @@ class King < Piece
 
   def checkmate?(board)
     # the king must be in check to be in checkmate
-    return false unless self.check?(board)
+    unless self.check?(board)
+      return false 
+    end
+
     kings_men = []
     squares = []
 
@@ -58,10 +61,13 @@ class King < Piece
   end
 
   def will_be_in_check?(loc_1, loc_2, board)
-    board.move(loc_1, loc_2)
-    check = self.check?(board)
-    board.undo_last_move
-    return check
+    if board.move(loc_1, loc_2)
+      check = self.check?(board)
+      board.undo_last_move
+      return check
+    else
+      return self.check?(board)
+    end
   end
 
 end

@@ -62,6 +62,10 @@ class Board
     @board.each(&block)
   end
 
+  def clear
+    @board.each { |square, piece| @board[square] = " " }
+  end
+
   def move(loc_1, loc_2)
     return nil if loc_1.nil? || loc_2.nil?
     piece = @board[loc_1]

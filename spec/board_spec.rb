@@ -147,4 +147,10 @@ describe Board do
     end
   end
 
+  it "should be able to clear the board" do
+    @board.clear
+    pieces = @board.board.select{ |square, piece| piece.is_a?(Piece)}
+    expect(pieces.empty?).to be_true
+  end
+
 end

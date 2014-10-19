@@ -76,7 +76,7 @@ class King < Piece
           still_in_check = self.will_be_in_check?(loc_1, loc_2, board)
           if still_in_check.nil?
             next
-          elsif !still_in_check
+          elsif still_in_check == false
             return false
           end
         end
@@ -92,6 +92,8 @@ class King < Piece
     if test_board.move(loc_1, loc_2)
       check = test_king.check?(test_board)
       return check
+    else 
+      return nil
     end
   end
 

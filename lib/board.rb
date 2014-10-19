@@ -141,4 +141,14 @@ class Board
     squares_between(loc_1, loc_2).any? { |square| @board[square] != " " }
   end
 
+  def piece_to_promote?
+    @board.each_value do |piece|
+      if piece.is_a?(Piece)
+        if piece.can_promote?
+          return piece
+        end
+      end
+    end
+  end
+
 end

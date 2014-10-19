@@ -191,6 +191,10 @@ describe Board do
       expect(@board["A8"]).to_not be_a(King)
     end
 
+    it "should know when a piece can be promoted" do
+      expect(@board.piece_to_promote?).to eq(@promote)
+    end
+
   end
 
   it "should be able to clear the board" do

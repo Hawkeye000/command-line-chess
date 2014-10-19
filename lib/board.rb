@@ -88,8 +88,8 @@ class Board
   def move(loc_1, loc_2)
     return nil if loc_1.nil? || loc_2.nil?
     piece = @board[loc_1]
+    self.save_board
     if piece.move(loc_2, self)
-      self.save_board
       @board[loc_1] = " "
       old_piece = @board[loc_2]
       self.set_piece(piece)

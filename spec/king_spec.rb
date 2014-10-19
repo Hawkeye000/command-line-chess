@@ -127,6 +127,22 @@ describe King do
       @board.move("D8", "H4")
       expect(@white_king.checkmate?(@board)).to be_false
     end
+
+    it "should know when a game is a stalemate" do
+      @board.clear
+      @white_king.location = "H1"
+      @white_pawn = Pawn.new("white", "H2")
+      @black_rook = Rook.new("black", "G4")
+      @board.set_piece(@black_king)
+      @board.set_piece(@white_king)
+      @board.set_piece(@black_rook)
+      @board.set_piece(@white_pawn)
+      @board.display
+      expect(@white_king.checkmate?(@board)).to be_false
+      expect(@white_king.stalemate?(@board)).to be_true
+    end
+
+
   end
 
 end

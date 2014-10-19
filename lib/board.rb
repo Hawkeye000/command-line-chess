@@ -81,26 +81,32 @@ class Board
     end
   end
 
+  def save_board
+    @saved_board = Marshal.load(Marshal.dump(@board))
+  end
+
   def move(loc_1, loc_2)
     return nil if loc_1.nil? || loc_2.nil?
     piece = @board[loc_1]
     if piece.move(loc_2, self)
+      self.save_board
       @board[loc_1] = " "
+      old_piece = @board[loc_2]
       self.set_piece(piece)
       castle_complement(piece, self)
-      @last_move = [loc_1, loc_2, piece]
       return loc_2
     else 
       return nil
     end
   end
 
+  def restore_saved_board
+    self.clear
+    @board = Marshal.load(Marshal.dump(@saved_board))
+  end
+
   def undo_last_move
-    piece = @last_move[2]
-    piece.moves = piece.moves - 1
-    piece.location = @last_move[0]
-    self.rv_piece(@last_move[1])
-    self.set_piece(piece)
+    self.restore_saved_board
   end
 
 

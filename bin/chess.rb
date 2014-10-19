@@ -32,7 +32,9 @@ loop do
   # handle special cases, otherwise run the move
   case locs[0]
   when "exit", "quit"
-    break
+    puts "Are you sure? (y/n)"
+    y_or_n = gets.chomp
+    break if y_or_n[0].upcase == "Y"
   when "save"
     puts "enter a name to save the game as:"
     file_name = gets.chomp

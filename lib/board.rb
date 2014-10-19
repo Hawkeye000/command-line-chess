@@ -66,6 +66,17 @@ class Board
     @board.each { |square, piece| @board[square] = " " }
   end
 
+  def piece_to_promote?
+    @board.each_value do |piece|
+      if piece.is_a?(Piece)
+        if piece.can_promote?
+          return piece
+        end
+      end
+    end
+    return nil
+  end
+
   def promote(loc, new_piece)
     piece = board[loc]
     if piece.can_promote?
@@ -139,16 +150,6 @@ class Board
     return false if loc_1 == loc_2
     return false if self[loc_1].is_a?(Knight)
     squares_between(loc_1, loc_2).any? { |square| @board[square] != " " }
-  end
-
-  def piece_to_promote?
-    @board.each_value do |piece|
-      if piece.is_a?(Piece)
-        if piece.can_promote?
-          return piece
-        end
-      end
-    end
   end
 
 end

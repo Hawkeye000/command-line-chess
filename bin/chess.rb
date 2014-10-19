@@ -13,6 +13,14 @@ loop do
 
   @board.display
 
+  # look for pieces that need promotion
+  promote = @board.piece_to_promote?
+  if promote
+    puts "Promote your piece, enter 'Queen', 'Knight', 'Bishop', or 'Rook'"
+    new_piece = Kernel.const_get(gets.chomp.to_sym)
+    @board.promote(promote.location, new_piece)
+  end
+
   # look for check and checkmate conditions
   if player.king(@board).checkmate?(@board)
     puts "#{player.color.capitalize} Player, you are in " + "CHECKMATE".colorize(:red)
@@ -56,5 +64,7 @@ loop do
       puts "Invalid move, try again".colorize(:red) 
     end
   end
+
+ 
   
 end

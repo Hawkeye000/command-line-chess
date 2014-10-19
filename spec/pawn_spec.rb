@@ -80,6 +80,15 @@ describe Pawn do
       @board.set_piece(@black_pawn)
       expect(@white_pawn.valid_move?("C3", @board)).to be_true
     end
+
+    it "should occupy the square it takes a piece from" do
+      @board = Board.new
+      @white_pawn = @board.board["D2"]
+      @black_pawn = Pawn.new("black", "C3")
+      @board.set_piece(@black_pawn)
+      @board.move("D2", "C3")
+      expect(@board["C3"]).to eq(@white_pawn)
+    end
    
     it "should be able to capture pieces en passant (in passing)" do
       @board = Board.new

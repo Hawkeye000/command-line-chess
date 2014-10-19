@@ -109,6 +109,9 @@ class Board
     self.restore_saved_board
   end
 
+  def to_a
+    @board.to_a
+  end
 
   def display
     puts "  " + ("A".."H").to_a.join(" ")

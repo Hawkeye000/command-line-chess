@@ -15,15 +15,15 @@ loop do
 
   # look for check and checkmate conditions
   if player.king(@board).checkmate?(@board)
-    puts "#{player.color.capitalize} Player, you are in CHECKMATE"
-    puts "#{opponent.color.capitalize} Player WINS"
+    puts "#{player.color.capitalize} Player, you are in " + "CHECKMATE".colorize(:red)
+    puts "#{opponent.color.capitalize} Player " + "WINS".colorize(:green)
     break
   elsif player.king(@board).stalemate?(@board)
-    puts "#{player.color.capitalize} Player, you are in STALEMATE"
+    puts "#{player.color.capitalize} Player, you are in " + "STALEMATE".colorize(:yellow)
     puts "DRAW"
     break
   elsif player.king(@board).check?(@board)
-    puts "#{player.color.capitalize} Player, you are in CHECK"
+    puts "#{player.color.capitalize} Player, you are in " + "CHECK".colorize(:yellow)
   end
 
   puts "#{player.color.capitalize} Player, enter your move:"
@@ -37,6 +37,8 @@ loop do
 
   unless player.move(locs[0], locs[1], @board).nil?
     player, opponent = opponent, player
+  else
+    puts "Invalid move, try again".colorize(:red) 
   end
   
 end

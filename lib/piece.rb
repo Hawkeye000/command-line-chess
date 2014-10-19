@@ -94,5 +94,16 @@ class Piece
     end
   end
 
+  def ==(o)
+    o.class == self.class && o.state == state
+  end
+  alias_method :eql?, :==
+
+  protected
+  
+    def state
+      [@color, @location, @moves]
+    end
+
 end
 

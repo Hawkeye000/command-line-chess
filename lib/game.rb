@@ -25,4 +25,16 @@ class Game
     @board.board
   end
 
+  def white_player
+    @white_player
+  end
+
+  def black_player
+    @black_player
+  end
+
+  def board
+    @board
+  end
+
 end

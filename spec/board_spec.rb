@@ -193,7 +193,6 @@ describe Board do
 
   end
 
-
   it "should be able to clear the board" do
     @board.clear
     pieces = @board.board.select{ |square, piece| piece.is_a?(Piece)}

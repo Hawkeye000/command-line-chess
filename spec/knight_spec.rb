@@ -1,4 +1,5 @@
 require_relative '../lib/knight.rb'
+require_relative '../lib/board.rb'
 
 describe Knight do 
 
@@ -36,6 +37,20 @@ describe Knight do
 
     it "should be able to jump pieces" do
       expect(@board.board["B1"].valid_move?("C3", @board)).to be_true
+    end
+
+    it "should be able to block a checkmate" do
+      @board.clear
+      @board.set_piece(King.new("white", "E1"))
+      @board.set_piece(King.new("black", "E8"))
+      @board.set_piece(Queen.new("black", "E7"))
+      @board.set_piece(Knight.new("white", "G1"))
+      @board.set_piece(Pawn.new("white", "D1"))
+      @board.set_piece(Pawn.new("white", "F2"))
+      @board.set_piece(Pawn.new("white", "D2"))
+      @board.set_piece(Rook.new("white", "F1"))
+      @white_king = @board["E1"]
+      expect(@white_king.checkmate?(@board)).to be_false
     end
   end
 

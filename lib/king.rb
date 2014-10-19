@@ -44,8 +44,8 @@ class King < Piece
     squares = []
 
     # check all possible moves and see if the king is still in check
-    board.board.each_key do |loc_1|
-      board.board.each_key do |loc_2|
+    board.board.keys.each do |loc_1|
+      board.board.keys.each do |loc_2|
         if board[loc_1].friend?(self)
           still_in_check = self.will_be_in_check?(loc_1, loc_2, board)
           if still_in_check.nil?
@@ -70,8 +70,8 @@ class King < Piece
     squares = []
 
     # check all possible moves and see if the king is put in check
-    board.board.each_key do |loc_1|
-      board.board.each_key do |loc_2|
+    board.board.keys.each do |loc_1|
+      board.board.keys.each do |loc_2|
         if board[loc_1].friend?(self)
           still_in_check = self.will_be_in_check?(loc_1, loc_2, board)
           if still_in_check.nil?

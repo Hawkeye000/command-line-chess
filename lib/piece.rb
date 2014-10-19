@@ -84,7 +84,7 @@ class Piece
 
   def valid_move?(new_loc, board)
     if board.piece_between?(@location, new_loc)
-      return false unless self.is_a?(Knight)
+      return false
     elsif self.friend?(board[new_loc])
       return false
     elsif board[new_loc].nil?
@@ -100,7 +100,7 @@ class Piece
   alias_method :eql?, :==
 
   protected
-  
+
     def state
       [@color, @location, @moves]
     end

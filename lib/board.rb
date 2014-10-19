@@ -137,6 +137,7 @@ class Board
 
   def piece_between?(loc_1, loc_2)
     return false if loc_1 == loc_2
+    return false if self[loc_1].is_a?(Knight)
     squares_between(loc_1, loc_2).any? { |square| @board[square] != " " }
   end
 

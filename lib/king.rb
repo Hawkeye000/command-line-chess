@@ -44,15 +44,41 @@ class King < Piece
     squares = []
 
     # check all possible moves and see if the king is still in check
-    board.each do |loc, piece| 
-      kings_men << piece if piece.color == self.color
-      squares << loc
+    board.board.each_key do |loc_1|
+      board.board.each_key do |loc_2|
+        if board[loc_1].friend?(self)
+          still_in_check = self.will_be_in_check?(loc_1, loc_2, board)
+          if still_in_check.nil?
+            next
+          elsif !still_in_check
+            return false
+          end
+        end
+      end
     end
 
-    kings_men.each do |piece|
-      squares.each do |new_loc|
-        unless self.will_be_in_check?(piece.location, new_loc, board)
-          return false
+    return true
+  end
+
+  def stalemate?(board)
+    # the king must be in check to be in checkmate
+    if self.check?(board)
+      return false 
+    end
+
+    kings_men = []
+    squares = []
+
+    # check all possible moves and see if the king is put in check
+    board.board.each_key do |loc_1|
+      board.board.each_key do |loc_2|
+        if board[loc_1].friend?(self)
+          still_in_check = self.will_be_in_check?(loc_1, loc_2, board)
+          if still_in_check.nil?
+            next
+          elsif !still_in_check
+            return false
+          end
         end
       end
     end
@@ -61,12 +87,11 @@ class King < Piece
   end
 
   def will_be_in_check?(loc_1, loc_2, board)
-    if board.move(loc_1, loc_2)
-      check = self.check?(board)
-      board.undo_last_move
+    test_board = Marshal.load(Marshal.dump(board))
+    test_king = test_board[@location]
+    if test_board.move(loc_1, loc_2)
+      check = test_king.check?(test_board)
       return check
-    else
-      return self.check?(board)
     end
   end
 

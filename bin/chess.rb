@@ -1,11 +1,10 @@
 require_relative '../lib/board.rb'
 
-@board = Board.new
+@game = Game.new
 
-@w_player = Player.new("white")
-@b_player = Player.new("black")
+@board = @game.board
 
-players = [@w_player, @b_player]
+players = [@game.white_player, @game.black_player]
 
 player = players[0]
 opponent = players[1]
@@ -18,7 +17,11 @@ loop do
   if player.king(@board).checkmate?(@board)
     puts "#{player.color.capitalize} Player, you are in CHECKMATE"
     puts "#{opponent.color.capitalize} Player WINS"
-    # break
+    break
+  elsif player.king(@board).stalemate?(@board)
+    puts "#{player.color.capitalize} Player, you are in STALEMATE"
+    puts "DRAW"
+    break
   elsif player.king(@board).check?(@board)
     puts "#{player.color.capitalize} Player, you are in CHECK"
   end

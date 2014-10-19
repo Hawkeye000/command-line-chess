@@ -33,6 +33,15 @@ class String
     nil
   end
 
+  def rank?
+    ("1".."8").any? { |x| self[0] == x }
+  end
+
+  def file?
+    ("A".."H").any? { |x| self[0] == x }
+  end
+
+
 end
 
 def squares_between(loc_1, loc_2)

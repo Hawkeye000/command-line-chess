@@ -15,6 +15,8 @@ class Player
 
     loc_1.upcase!
     loc_2.upcase!
+
+    return nil unless loc_1[0].file? && loc_2[0].file? && loc_1[1].rank? && loc_2[1].file?
     if board.board[loc_1].color == @color
       board.move(loc_1, loc_2) unless self.king(board).will_be_in_check?(loc_1, loc_2, board)
     end

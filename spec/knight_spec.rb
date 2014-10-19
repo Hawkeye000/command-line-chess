@@ -12,11 +12,18 @@ describe Knight do
   end
 
   describe "valid moves" do
-    before { @knight = Knight.new("white", "D4") }
+    before { @knight = Knight.new("white", "D5") }
     before { @board = Board.new }
 
     it "should be able to move in an 'L'" do
-      expect(@knight.valid_move?("F5", @board)).to be_true
+      expect(@knight.valid_move?("F6", @board)).to be_true
+      expect(@knight.valid_move?("F4", @board)).to be_true
+      expect(@knight.valid_move?("E3", @board)).to be_true
+      expect(@knight.valid_move?("E7", @board)).to be_true
+      expect(@knight.valid_move?("C7", @board)).to be_true
+      expect(@knight.valid_move?("B6", @board)).to be_true
+      expect(@knight.valid_move?("B4", @board)).to be_true
+      expect(@knight.valid_move?("C3", @board)).to be_true
     end
 
     it "should not be able to move horizontally to any position" do

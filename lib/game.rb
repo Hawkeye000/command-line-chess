@@ -7,6 +7,8 @@ class Game
     @board = Board.new
     @white_player = Player.new("white")
     @black_player = Player.new("black")
+    @turn = @white_player
+    @opponent = @black_player
   end
 
   def save(file_name)
@@ -15,7 +17,7 @@ class Game
     end
   end
 
-  def load(file_name)
+  def self.load(file_name)
     File.open(file_name) do |file|
       Marshal.load(file)
     end
@@ -37,4 +39,19 @@ class Game
     @board
   end
 
+  def turn
+    @turn
+  end
+
+  def opponent
+    @opponent
+  end
+
+  def turn=(turn)
+    @turn = turn
+  end
+
+  def opponent=(opponent)
+    @opponent = opponent
+  end
 end

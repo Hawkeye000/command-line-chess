@@ -6,8 +6,8 @@ require_relative '../lib/board.rb'
 
 players = [@game.white_player, @game.black_player]
 
-player = players[0]
-opponent = players[1]
+player = @game.turn
+opponent = @game.opponent
 
 loop do 
 
@@ -29,16 +29,30 @@ loop do
   puts "#{player.color.capitalize} Player, enter your move:"
   locs = gets.chomp.split(" ")
 
-  # handle special cases
+  # handle special cases, otherwise run the move
   case locs[0]
   when "exit", "quit"
     break
-  end
-
-  unless player.move(locs[0], locs[1], @board).nil?
-    player, opponent = opponent, player
+  when "save"
+    puts "enter a name to save the game as:"
+    file_name = gets.chomp
+    @game.save("save/#{file_name}")
+    break
+  when "load"
+    puts "enter the name of the game you want to load:"
+    file_name = gets.chomp
+    @game = Game.load("save/#{file_name}")
+    @board = @game.board
+    players = [@game.white_player, @game.black_player]
+    player, opponent = @game.turn, @game.opponent
   else
-    puts "Invalid move, try again".colorize(:red) 
+    unless player.move(locs[0], locs[1], @board).nil?
+    player, opponent = opponent, player
+    @game.turn = player
+    @game.opponent = opponent
+    else
+      puts "Invalid move, try again".colorize(:red) 
+    end
   end
   
 end

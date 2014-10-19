@@ -14,11 +14,11 @@ describe Player do
     end
     it "should be able to move its own color" do
       @w_player.move("D2", "D3", @board)
-      expect(@board.board["D3"]).to be_a(Pawn)
+      expect(@board["D3"]).to be_a(Pawn)
     end
     it "should not be able to move the other player's pieces" do
       @w_player.move("D7", "D6", @board)
-      expect(@board.board["D6"]).to eq(" ")
+      expect(@board["D6"]).to eq(" ")
     end
   end
 

@@ -29,6 +29,10 @@ class String
     nil
   end
 
+  def friend?(o = nil)
+    nil
+  end
+
 end
 
 def squares_between(loc_1, loc_2)

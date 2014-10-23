@@ -1,6 +1,6 @@
 require_relative '../lib/board.rb'
 
-describe Board do 
+describe Board do
 
   before { @board = Board.new }
 
@@ -21,11 +21,11 @@ describe Board do
     it "should not be nil if the hash is in bounds" do
       expect(@board.board["A1"]).to_not be nil
     end
-    
+
   end
 
   describe "setting up the game" do
-  
+
     it "should have a pawn on A2" do
       expect(@board.board["A2"]).to be_a(Pawn)
     end
@@ -54,11 +54,11 @@ describe Board do
   describe "making moves" do
 
     it "should know when a notation refers to a spot off the board" do
-      expect(@board.on_board?("Z1")).to be_false
+      expect(@board.on_board?("Z1")).to be_falsey
     end
 
     it "should know when a notation refers to a spot on the board" do
-      expect(@board.on_board?("A1")).to be_true
+      expect(@board.on_board?("A1")).to be_truthy
     end
 
     describe "knowing which squares are between two locations" do
@@ -89,11 +89,11 @@ describe Board do
 
     describe "piece between" do
       it "should know when pieces are in between two locations" do
-        expect(@board.piece_between?("A1", "A3")).to be_true
+        expect(@board.piece_between?("A1", "A3")).to be_truthy
       end
 
       it "should know when there are no pieces in between two locations" do
-        expect(@board.piece_between?("A2", "A4")).to be_false
+        expect(@board.piece_between?("A2", "A4")).to be_falsey
       end
     end
 
@@ -129,17 +129,17 @@ describe Board do
       end
 
       describe "taking an opposing color" do
-        before do 
+        before do
           @board.move("B1", "A3")
           @board.move("A3", "B5")
           @board.move("B5", "C7")
           @knight = @board.board["C7"]
         end
 
-        it "should have a white piece on the square" do 
+        it "should have a white piece on the square" do
           expect(@knight.color).to eq("white")
         end
-        
+
         it "should be be a knight" do
           expect(@knight).to be_a(Knight)
         end
@@ -154,7 +154,7 @@ describe Board do
         expect(@board["D2"]).to be_a(Pawn)
         expect(@board["D2"].moves).to eq(0)
       end
-      
+
     end
   end
 
@@ -200,7 +200,7 @@ describe Board do
   it "should be able to clear the board" do
     @board.clear
     pieces = @board.board.select{ |square, piece| piece.is_a?(Piece)}
-    expect(pieces.empty?).to be_true
+    expect(pieces.empty?).to be_truthy
   end
 
 end

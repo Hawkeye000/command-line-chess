@@ -1,13 +1,13 @@
 require_relative '../lib/pawn.rb'
 require 'stringio'
 
-describe Pawn do 
+describe Pawn do
 
   it { should be_a_kind_of(Piece) }
   it { should respond_to :color }
   it { should respond_to :location }
 
-  it "should know what its character is" do 
+  it "should know what its character is" do
     @pawn = Pawn.new("White", "A1")
     expect(@pawn.icon).to eq("\u2659")
   end
@@ -27,46 +27,46 @@ describe Pawn do
   end
 
   describe "valid moves" do
-    before do 
+    before do
       @board = Board.new
       @white_pawn = @board.board["D2"]
       @black_pawn = @board.board["D7"]
     end
 
     it "should be able to move forward once ordinarility" do
-      expect(@white_pawn.valid_move?("D3", @board)).to be_true
+      expect(@white_pawn.valid_move?("D3", @board)).to be_truthy
     end
 
     it "should be able to move forward once ordinarility" do
-      expect(@black_pawn.valid_move?("D6", @board)).to be_true
+      expect(@black_pawn.valid_move?("D6", @board)).to be_truthy
     end
 
     it "should be able to move forward twice on the first move" do
-      expect(@white_pawn.valid_move?("D4", @board)).to be_true
+      expect(@white_pawn.valid_move?("D4", @board)).to be_truthy
     end
 
     it "should not be able to move forward when the square is occupied" do
       @opponent = Pawn.new("black", "D3")
       @board.set_piece(@opponent)
-      expect(@white_pawn.valid_move?("D3", @board)).to be_false
-      expect(@white_pawn.valid_move?("D4", @board)).to be_false
+      expect(@white_pawn.valid_move?("D3", @board)).to be_falsey
+      expect(@white_pawn.valid_move?("D4", @board)).to be_falsey
     end
 
 
     it "should not be able to move forward three times" do
-      expect(@white_pawn.valid_move?("D5", @board)).to be_false
+      expect(@white_pawn.valid_move?("D5", @board)).to be_falsey
     end
 
     it "should not be able to move left or right" do
-      expect(@white_pawn.valid_move?("C2", @board)).to be_false
+      expect(@white_pawn.valid_move?("C2", @board)).to be_falsey
     end
 
     it "should not be able to move diagonally" do
-      expect(@white_pawn.valid_move?("C3", @board)).to be_false
+      expect(@white_pawn.valid_move?("C3", @board)).to be_falsey
     end
 
     it "should not be able to move backwards" do
-      expect(@white_pawn.valid_move?("D1", @board)).to be_false
+      expect(@white_pawn.valid_move?("D1", @board)).to be_falsey
     end
 
   end
@@ -78,7 +78,7 @@ describe Pawn do
       @white_pawn = @board.board["D2"]
       @black_pawn = Pawn.new("black", "C3")
       @board.set_piece(@black_pawn)
-      expect(@white_pawn.valid_move?("C3", @board)).to be_true
+      expect(@white_pawn.valid_move?("C3", @board)).to be_truthy
     end
 
     it "should occupy the square it takes a piece from" do
@@ -89,7 +89,7 @@ describe Pawn do
       @board.move("D2", "C3")
       expect(@board["C3"]).to eq(@white_pawn)
     end
-   
+
     it "should be able to capture pieces en passant (in passing)" do
       @board = Board.new
       @white_pawn = @board.board["D2"]
@@ -104,14 +104,14 @@ describe Pawn do
 
   describe "upgrading pawns" do
 
-    before do 
+    before do
       @board = Board.new
       @white_pawn = Pawn.new("white", "A8")
       @board.set_piece(@white_pawn)
     end
-    
+
     it "should be able to promote when on " do
-      expect(@white_pawn.can_promote?).to be_true
+      expect(@white_pawn.can_promote?).to be_truthy
     end
   end
 end

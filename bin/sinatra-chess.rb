@@ -1,5 +1,9 @@
 require_relative '../lib/board.rb'
 require 'sinatra'
+require 'dalli'
+
+options = { :namespace => "app_v1", :compress => true }
+cache = Dalli::Client.new('localhost:11211', options)
 
 set :views, Proc.new { File.join(root, "../views") }
 set :public, Proc.new { File.join(root, "../public") }
@@ -17,13 +21,13 @@ end
 get '/new_game' do
   @game = Game.new
 
-  session[:game] = @game
+  cache.set("game", @game)
   redirect to('/game')
 
 end
 
 get '/game' do
-  @game = session[:game]
+  @game = cache.get("game")
   @board = @game.board
   erb :game, locals: {list: @board}
 end
@@ -31,9 +35,9 @@ end
 post '/game' do
   loc1 = params[:initial_position]
   loc2 = params[:new_position]
-  @game = session[:game]
+  @game = cache.get(:game)
   @board = @game.board
   @board.move(loc1, loc2)
-  session[:game] = @game
+  cache.set(:game, @game)
   erb :game, locals: {list: @board}
 end

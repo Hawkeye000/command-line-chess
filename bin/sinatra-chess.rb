@@ -37,7 +37,7 @@ post '/game' do
   loc2 = params[:new_position]
   @game = cache.get(:game)
   @board = @game.board
-  @board.move(loc1, loc2)
+  @board.move(loc1.upcase, loc2.upcase)
   cache.set(:game, @game)
   erb :game, locals: {list: @board}
 end

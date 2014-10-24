@@ -1,3 +1,9 @@
-table, th, td {
-  
+th, td {
+  font-size: 36;
+  align: center;
+  width: 40px;
+}
+
+input {
+  width: 50px;
 }

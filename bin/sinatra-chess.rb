@@ -1,6 +1,8 @@
 require_relative '../lib/board.rb'
 require 'sinatra'
 
+set :views, Proc.new { File.join(root, "../views") }
+
 not_found do
   "404 NOT FOUND\n"
 end
@@ -23,5 +25,5 @@ end
 get '/game' do
   @game = Game.new
   @board = @game.board
-  "#{@board.to_s}"
+  erb :game, locals: {list: @board}
 end

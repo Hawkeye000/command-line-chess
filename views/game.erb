@@ -1,0 +1,22 @@
+<h1>Play Chess!</h1>
+  <table>
+    <tr>
+      <% ("A".."H").each do |file| %>
+        <td></td><th><%= "#{file}" %></th>
+      <% end %>
+    </tr>
+    <% 8.downto(1) do |rank| %>
+      <tr><th><%= "#{rank}" %></th>
+      <% ("A".."H").each do |file| %>
+        <% square = "#{file}#{rank}" %>
+        <td><%= "#{@board[square]}" %></td>
+      <% end %>
+      <th><%= "#{rank}" %></th>
+      </tr>
+    <% end %>
+    <tr>
+      <% ("A".."H").each do |file| %>
+        <td></td><th><%= "#{file}" %></th>
+      <% end %>
+    </tr>
+  </table>

@@ -4,6 +4,8 @@ require 'sinatra'
 set :views, Proc.new { File.join(root, "../views") }
 set :public, Proc.new { File.join(root, "../public") }
 
+enable :sessions
+
 not_found do
   "404 NOT FOUND\n"
 end
@@ -14,17 +16,18 @@ end
 
 get '/new_game' do
   @game = Game.new
-
   @board = @game.board
-
   players = [@game.white_player, @game.black_player]
-
   player = @game.turn
   opponent = @game.opponent
+
+  session[:game] = @game
+  redirect to('/game')
+
 end
 
 get '/game' do
-  @game = Game.new
+  @game = session[:game]
   @board = @game.board
   erb :game, locals: {list: @board}
 end

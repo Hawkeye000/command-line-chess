@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
-  s.name = 'chess'
-  s.version = '0.0.0'
+  s.name = 'chess-hawkeye'
+  s.version = '0.0.1'
   s.date = '2014-10-24'
   s.summary = "Play chess using the command line."
   s.description = "Contain libraries for setting up and playing games of chess,\

@@ -7,3 +7,20 @@ th, td {
 input {
   width: 50px;
 }
+
+.button-link {
+  color: black;
+  background: #EEEEEE;
+
+  border: 2px solid #CCCCCC;
+  border-radius: 5px;
+
+  padding: 4px 10px;
+
+  text-decoration: none
+}
+
+.button-link:hover, .button-link:focus {
+  background: #AAAAAA;
+  border: 2px solid black;
+}

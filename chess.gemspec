@@ -6,6 +6,9 @@ Gem::Specification.new do |s|
   s.description = "Contain libraries for setting up and playing games of chess,\
                   making and validating moves, and evaluating victory conditions."
   s.authors = ["Benjamin Pearce"]
-  s.files = ["lib/chess.rb"]
+  require 'rake'
+  s.files = Dir['lib/*.rb'] + Dir['bin/*']
+  s.files += Dir['[A-Z]*'] + Dir['spec/**/*']
+  s.files.reject! { |fn| fn.include? "CVS" }
   s.license = "MIT"
 end

@@ -1,8 +1,11 @@
+<link rel="stylesheet" href="/sinatra.css">
+
 <h1>Play Chess!</h1>
   <table>
     <tr>
+      <td></td>
       <% ("A".."H").each do |file| %>
-        <td></td><th><%= "#{file}" %></th>
+        <th><%= "#{file}" %></th>
       <% end %>
     </tr>
     <% 8.downto(1) do |rank| %>
@@ -15,8 +18,9 @@
       </tr>
     <% end %>
     <tr>
+      <td></td>
       <% ("A".."H").each do |file| %>
-        <td></td><th><%= "#{file}" %></th>
+        <th><%= "#{file}" %></th>
       <% end %>
     </tr>
   </table>

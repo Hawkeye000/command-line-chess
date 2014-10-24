@@ -2,6 +2,7 @@ require_relative '../lib/board.rb'
 require 'sinatra'
 
 set :views, Proc.new { File.join(root, "../views") }
+set :public, Proc.new { File.join(root, "../public") }
 
 not_found do
   "404 NOT FOUND\n"

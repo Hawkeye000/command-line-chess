@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Contain libraries for setting up and playing games of chess,\
                   making and validating moves, and evaluating victory conditions."
   s.authors = ["Benjamin Pearce"]
+  s.add_runtime_dependency 'colorize', '~> 0.7.3'
   require 'rake'
   s.files = Dir['lib/*.rb'] + Dir['bin/*']
   s.files += Dir['[A-Z]*'] + Dir['spec/**/*']

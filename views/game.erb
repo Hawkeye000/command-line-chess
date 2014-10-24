@@ -33,10 +33,11 @@
     </tr>
   </table>
 
-  <form>
-    Make your move: <input type="text" name="initial position">  
-    <input type="text" name="new position">
-    <a href="/move" class="button-link">Move!</a>
+  <form method="POST" action="/game">
+    Make your move:
+    <input type="text" name="initial_position">
+    <input type="text" name="new_position">
+    <input type="submit" class="button" value="Move!">
   </form>
 
 

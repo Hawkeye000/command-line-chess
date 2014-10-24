@@ -16,10 +16,6 @@ end
 
 get '/new_game' do
   @game = Game.new
-  @board = @game.board
-  players = [@game.white_player, @game.black_player]
-  player = @game.turn
-  opponent = @game.opponent
 
   session[:game] = @game
   redirect to('/game')
@@ -29,5 +25,15 @@ end
 get '/game' do
   @game = session[:game]
   @board = @game.board
+  erb :game, locals: {list: @board}
+end
+
+post '/game' do
+  loc1 = params[:initial_position]
+  loc2 = params[:new_position]
+  @game = session[:game]
+  @board = @game.board
+  @board.move(loc1, loc2)
+  session[:game] = @game
   erb :game, locals: {list: @board}
 end

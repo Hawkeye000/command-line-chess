@@ -1,7 +1,7 @@
 Command Line Chess
 ==================
 
-Play command line chess!  Start the game by running "$ ruby bin/chess.rb" from the root directory.  
+Play command line chess!  Start the game by running "$ ruby lib/chess.rb" from the root directory.  
 
 You can save the game by typing "save" instead of a move.
 

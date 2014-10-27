@@ -1,4 +1,4 @@
-require_relative '../lib/piece.rb'
+require_relative '../lib/chess/piece.rb'
 
 describe Piece do
 

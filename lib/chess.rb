@@ -1,6 +1,6 @@
-require_relative '../lib/board.rb'
+require_relative 'chess/board.rb'
 
-class Chess
+module Chess
   def self.play
     @game = Game.new
 

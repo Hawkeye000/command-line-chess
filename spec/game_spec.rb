@@ -1,6 +1,6 @@
-require_relative "../lib/game.rb"
+require_relative "../lib/chess/game.rb"
 
-describe Game do 
+describe Game do
 
   it "should be able to save and load the game" do
     @game = Game.new

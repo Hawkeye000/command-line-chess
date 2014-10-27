@@ -1,4 +1,4 @@
-require_relative '../lib/queen.rb'
+require_relative '../lib/chess/queen.rb'
 
 describe Queen do
 

@@ -1,4 +1,4 @@
-require_relative '../lib/king.rb'
+require_relative '../lib/chess/king.rb'
 
 describe King do
 

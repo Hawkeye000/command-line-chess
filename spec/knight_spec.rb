@@ -1,5 +1,5 @@
-require_relative '../lib/knight.rb'
-require_relative '../lib/board.rb'
+require_relative '../lib/chess/knight.rb'
+require_relative '../lib/chess/board.rb'
 
 describe Knight do
 

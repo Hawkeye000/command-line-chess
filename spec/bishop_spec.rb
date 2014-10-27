@@ -1,4 +1,5 @@
-require_relative '../lib/bishop.rb'
+require 'spec_helper'
+require_relative '../lib/chess/bishop.rb'
 
 describe Bishop do
 

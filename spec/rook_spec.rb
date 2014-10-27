@@ -1,4 +1,4 @@
-require_relative '../lib/rook.rb'
+require_relative '../lib/chess/rook.rb'
 
 describe Rook do
 

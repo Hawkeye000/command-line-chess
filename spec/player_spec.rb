@@ -1,8 +1,8 @@
-require_relative "../lib/player.rb"
-require_relative "../lib/board.rb"
+require_relative "../lib/chess/player.rb"
+require_relative "../lib/chess/board.rb"
 
-describe Player do 
-  
+describe Player do
+
   it { should respond_to :color }
   it { should respond_to :move }
 

@@ -1,4 +1,4 @@
-require_relative '../lib/pawn.rb'
+require_relative '../lib/chess/pawn.rb'
 require 'stringio'
 
 describe Pawn do

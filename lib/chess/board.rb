@@ -101,12 +101,13 @@ class Board
     piece = @board[loc_1]
     self.save_board
     if piece.is_a?(Pawn)
-      rv_piece(piece.en_passant?(loc_2, self))
+      passed_piece = self[(piece.en_passant?(loc_2, self))]
     end
     if piece.move(loc_2, self)
       @board[loc_1] = " "
       old_piece = @board[loc_2]
       self.set_piece(piece)
+      rv_piece(passed_piece.location) if passed_piece
       castle_complement(piece, self)
       return loc_2
     else

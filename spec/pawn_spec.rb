@@ -91,17 +91,29 @@ describe Pawn do
       expect(@board["C3"]).to eq(@white_pawn)
     end
 
-    it "should be able to capture pieces en passant (in passing)" do
-      @board = Board.new
-      @white_pawn = @board.board["D2"]
-      @black_pawn = @board.board["E7"]
-      @board.move("D2", "D4")
-      @board.move("D4", "D5")
-      @board.move("E7", "E5")
-      expect(@white_pawn.en_passant?("E6", @board)).to eq("E5")
-      @board.move("D5", "E6")
-      @board.display
-      expect(@board.board["E5"]).to eq(" ")
+    describe "captureing pieces en passant" do
+      before do
+        @board = Board.new
+        @white_pawn = @board.board["D2"]
+        @black_pawn = @board.board["E7"]
+        @board.move("D2", "D4")
+        @board.move("D4", "D5")
+        @board.move("E7", "E5")
+      end
+
+      it "should return the square of the passed piece" do
+        expect(@white_pawn.en_passant?("E6", @board)).to eq("E5")
+      end
+
+      it "should remove the passed piece from the board" do
+        @board.move("D5", "E6")
+        expect(@board["E5"]).to eq(" ")
+      end
+
+      it "should place the pawn in the moved-to location" do
+        @board.move("D5", "E6")
+        expect(@board["E6"]).to be_a(Pawn)
+      end
     end
   end
 

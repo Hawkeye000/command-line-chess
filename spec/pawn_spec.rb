@@ -1,5 +1,6 @@
 require_relative '../lib/chess/pawn.rb'
 require 'stringio'
+require 'spec_helper'
 
 describe Pawn do
 
@@ -97,7 +98,9 @@ describe Pawn do
       @board.move("D2", "D4")
       @board.move("D4", "D5")
       @board.move("E7", "E5")
+      expect(@white_pawn.en_passant?("E6", @board)).to eq("E5")
       @board.move("D5", "E6")
+      @board.display
       expect(@board.board["E5"]).to eq(" ")
     end
   end

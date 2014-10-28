@@ -6,6 +6,11 @@ class Piece
     @color = color
     @location = location.upcase
     @moves = 0
+    @passable = false
+  end
+
+  def passable?
+    @passable
   end
 
   def moves
@@ -64,7 +69,7 @@ class Piece
     if self.valid_move?(new_loc, board)
       @moves += 1
       @location = new_loc
-    else 
+    else
       return nil
     end
   end
@@ -75,7 +80,7 @@ class Piece
 
   def my_king(board)
     # tells a player where his beloved monarch is
-    board.board.each do |location, piece| 
+    board.board.each do |location, piece|
       if piece.is_a?(King) && piece.color == self.color
         return piece
       end
@@ -106,4 +111,3 @@ class Piece
     end
 
 end
-

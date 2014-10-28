@@ -15,11 +15,17 @@ class Pawn < Piece
     super
   end
 
+  def move(new_loc, board)
+    x, y = new_loc - @location
+    @passable = true if y.abs == 2
+    super
+  end
+
   def valid_move?(new_loc, board)
     x, y = new_loc - @location
 
     y *= -1 if @color == "black"
-    
+
     if x == 0 && y == 1 && board[new_loc] == " "
     elsif x == 0 && y == 2 && @moves == 0 && board[new_loc] == " "
     elsif y == 1 && x.abs == 1 && board.board[new_loc].opponent?(self)
@@ -34,13 +40,13 @@ class Pawn < Piece
   def en_passant?(new_loc, board)
     x, y = new_loc - @location
     passing_square = relative_square(@location, x, 0)
-
-    passed_piece = board.board[passing_square]
-    # conditions for en passant, must be opposing pawn that moved forward twice to 
+    passed_piece = board[passing_square]
+    return false unless passed_piece.is_a?(Pawn)
+    # conditions for en passant, must be opposing pawn that moved forward twice to
     # the square it would have occupied if it was only moved one square
-    if passed_piece.is_a?(Pawn) && self.opponent?(passed_piece) && passed_piece.moves == 1
-      board.rv_piece(passing_square)
-      return true
+    if self.opponent?(passed_piece) && passed_piece.passable?
+      # board.rv_piece(passing_square)
+      return passing_square
     else
       return false
     end

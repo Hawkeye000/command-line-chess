@@ -78,6 +78,7 @@ describe King do
         @board.move("F6", "F3")
         expect(@king.check?(@board)).to be_falsey
         expect(@king.valid_move?("G1", @board)).to be_falsey
+        expect(@board["F1"]).to eq(" ")
       end
 
     end

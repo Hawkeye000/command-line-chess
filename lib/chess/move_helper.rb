@@ -51,7 +51,7 @@ def squares_between(loc_1, loc_2)
     return nil
   end
 
-  if x > 0 
+  if x > 0
     x_range = (loc_1[0]..loc_2[0]).to_a
   elsif x < 0
     x_range = (loc_2[0]..loc_1[0]).to_a.reverse
@@ -63,9 +63,9 @@ def squares_between(loc_1, loc_2)
   end
 
   if x != 0 && y == 0
-    y_range = Array.new(x_range.length, loc_1[1]) 
+    y_range = Array.new(x_range.length, loc_1[1])
   elsif x == 0 && y != 0
-    x_range = Array.new(y_range.length, loc_1[0])  
+    x_range = Array.new(y_range.length, loc_1[0])
   end
 
   # zip up the ranges to made a clean list of square between
@@ -93,7 +93,7 @@ def check_castle(king, board, horiz_move)
     queen_rook = board.board["A1"]
     king_rook = board.board["H1"]
     horiz_move < 0 ? attack = "D1" : attack = "F1"
-  else 
+  else
     return nil
   end
 
@@ -112,9 +112,11 @@ def check_castle(king, board, horiz_move)
 
   if test_king.check?(board)
     board.set_piece(king)
+    board.rv_piece(attack)
     return false
   end
-  
+
+  # remove the test piece and reset the king
   board.rv_piece(attack)
   board.set_piece(king)
 
@@ -129,7 +131,7 @@ end
 def castle_complement(piece, board)
   if piece.moves == 1
     if piece.is_a?(King)
-      
+
       case piece.location
       when "C1"
         rook = board["A1"]
@@ -150,7 +152,7 @@ def castle_complement(piece, board)
         board.rv_piece(piece.location)
 
         # move the rook
-        
+
         board.rv_piece(rook.location)
         rook.location = rook_new_loc
         board.set_piece(rook)
@@ -159,7 +161,7 @@ def castle_complement(piece, board)
         board.set_piece(piece)
       end
     end
-  end 
+  end
 end
 
 def relative_square(location, x, y)

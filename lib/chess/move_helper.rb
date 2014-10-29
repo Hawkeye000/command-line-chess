@@ -17,6 +17,10 @@ class String
     nil
   end
 
+  def passable=(o)
+    nil
+  end
+
   def color
     nil
   end

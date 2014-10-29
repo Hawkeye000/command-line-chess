@@ -114,6 +114,12 @@ describe Pawn do
         @board.move("D5", "E6")
         expect(@board["E6"]).to be_a(Pawn)
       end
+
+      it "should only be able to pass a just-moved piece" do
+        @board.move("A2", "A4")
+        @board.move("A7", "A5")
+        expect(@board.move("D5", "E6")).to be_falsey
+      end
     end
   end
 

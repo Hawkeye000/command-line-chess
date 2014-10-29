@@ -37,7 +37,7 @@ class King < Piece
   def checkmate?(board)
     # the king must be in check to be in checkmate
     unless self.check?(board)
-      return false 
+      return false
     end
 
     kings_men = []
@@ -63,7 +63,7 @@ class King < Piece
   def stalemate?(board)
     # the king must be in check to be in checkmate
     if self.check?(board)
-      return false 
+      return false
     end
 
     kings_men = []
@@ -92,7 +92,7 @@ class King < Piece
     if test_board.move(loc_1, loc_2)
       check = test_king.check?(test_board)
       return check
-    else 
+    else
       return nil
     end
   end

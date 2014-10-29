@@ -108,7 +108,7 @@ class Board
       self.set_piece(piece)
       rv_piece(self.passed_piece)
       castle_complement(piece, self)
-      self.clear_passable
+      self.clear_passable(piece.color)
       return loc_2
     else
       return nil
@@ -116,8 +116,8 @@ class Board
 
   end
 
-  def clear_passable
-    @board.each { |piece| piece.passable = false if piece.is_a?(Piece) }
+  def clear_passable(color)
+    @board.each_value { |piece| piece.passable = false if piece.color != color }
   end
 
   def passed_piece

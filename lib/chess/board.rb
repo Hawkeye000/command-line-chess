@@ -79,6 +79,7 @@ class Board
 
   def promote(loc, new_piece)
     piece = board[loc]
+    new_piece = Kernel.const_get(new_piece.capitalize)
     if piece.can_promote?
       if new_piece == Queen || new_piece == Rook \
           || new_piece == Bishop || new_piece == Knight

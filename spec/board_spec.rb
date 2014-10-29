@@ -167,27 +167,27 @@ describe Board do
     end
 
     it "should be able to promote to a queen" do
-      @board.promote("A8", Queen)
+      @board.promote("A8", :queen)
       expect(@board["A8"]).to be_a(Queen)
     end
 
     it "should be able to promote to a Knight" do
-      @board.promote("A8", Knight)
+      @board.promote("A8", :knight)
       expect(@board["A8"]).to be_a(Knight)
     end
 
     it "should be able to promote to a Bishop" do
-      @board.promote("A8", Bishop)
+      @board.promote("A8", :bishop)
       expect(@board["A8"]).to be_a(Bishop)
     end
 
     it "should be able to promote to a Rook" do
-      @board.promote("A8", Rook)
+      @board.promote("A8", :rook)
       expect(@board["A8"]).to be_a(Rook)
     end
 
     it "should not be able to promote to a King" do
-      @board.promote("A8", King)
+      @board.promote("A8", :king)
       expect(@board["A8"]).to_not be_a(King)
     end
 

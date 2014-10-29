@@ -22,6 +22,7 @@ class Player
         board.move(loc_1, loc_2)
       else
         board.move_status = "Can't put your king into Check"
+        return nil
       end
     end
 

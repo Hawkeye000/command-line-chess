@@ -3,6 +3,8 @@ require 'colorize'
 
 class Board
 
+  attr_accessor :move_status
+
   def initialize
     @board = Hash.new
     ("A".."H").each do |letter|

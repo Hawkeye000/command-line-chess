@@ -104,10 +104,13 @@ class Piece
 
   def valid_move?(new_loc, board)
     if board.piece_between?(@location, new_loc)
+      board.move_status = "Piece in between move"
       return false
     elsif self.friend?(board[new_loc])
+      board.move_status = "Can't take your own piece"
       return false
     elsif board[new_loc].nil?
+      board.move_status = "Position is off the board"
       return false
     else
       return true

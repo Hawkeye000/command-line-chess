@@ -18,9 +18,13 @@ class Player
 
     return nil unless loc_1[0].file? && loc_2[0].file? && loc_1[1].rank? && loc_2[1].rank?
     if board.board[loc_1].color == @color
-      board.move(loc_1, loc_2) unless self.king(board).will_be_in_check?(loc_1, loc_2, board)
+      unless self.king(board).will_be_in_check?(loc_1, loc_2, board)
+        board.move(loc_1, loc_2)
+      else
+        board.move_status = "Can't put your king into Check"
+      end
     end
-    
+
   end
 
   def king(board)

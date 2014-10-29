@@ -6,11 +6,26 @@ class Piece
     @color = color
     @location = location.upcase
     @moves = 0
+
+    # for determining en passant
     @passable = false
+    @passed = false
   end
 
   def passable?
     @passable
+  end
+
+  def passable=(o)
+    @passable = o
+  end
+
+  def passed?
+    @passed
+  end
+
+  def passed=(o)
+    @passed = o
   end
 
   def moves

@@ -9,6 +9,14 @@ class String
     end
   end
 
+  def passed?
+    nil
+  end
+
+  def passable?
+    nil
+  end
+
   def color
     nil
   end

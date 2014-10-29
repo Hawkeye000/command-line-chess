@@ -46,7 +46,8 @@ class Pawn < Piece
     # the square it would have occupied if it was only moved one square
     if self.opponent?(passed_piece) && passed_piece.passable?
       # board.rv_piece(passing_square)
-      return passing_square
+      passed_piece.passed = true
+      return passed_piece.location
     else
       return false
     end

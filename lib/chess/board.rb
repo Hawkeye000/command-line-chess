@@ -100,19 +100,27 @@ class Board
     return nil if loc_1.nil? || loc_2.nil?
     piece = @board[loc_1]
     self.save_board
-    if piece.is_a?(Pawn)
-      passed_piece = self[(piece.en_passant?(loc_2, self))]
-    end
+
     if piece.move(loc_2, self)
       @board[loc_1] = " "
       old_piece = @board[loc_2]
       self.set_piece(piece)
-      rv_piece(passed_piece.location) if passed_piece
+      rv_piece(self.passed_piece)
       castle_complement(piece, self)
+      self.clear_passable
       return loc_2
     else
       return nil
     end
+
+  end
+
+  def clear_passable
+    @board.each { |piece| piece.passable = false if piece.is_a?(Piece) }
+  end
+
+  def passed_piece
+    @board.each_value { |piece| return piece.location if piece.passed? && piece.is_a?(Pawn) }
   end
 
   def restore_saved_board

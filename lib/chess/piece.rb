@@ -90,7 +90,7 @@ class Piece
   end
 
   def can_promote?
-    (@color == "white" && self.rank == "8") || (@color == "black" && self.rank == "1") && self.is_a?(Pawn)
+    ((@color == "white" && self.rank == "8") || (@color == "black" && self.rank == "1")) && self.is_a?(Pawn)
   end
 
   def my_king(board)

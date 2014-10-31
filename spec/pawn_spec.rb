@@ -128,11 +128,17 @@ describe Pawn do
     before do
       @board = Board.new
       @white_pawn = Pawn.new("white", "A8")
+      @white_rook = Rook.new("white", "H8")
       @board.set_piece(@white_pawn)
     end
 
-    it "should be able to promote when on " do
+    it "should be able to promote when on last rank" do
       expect(@white_pawn.can_promote?).to be_truthy
     end
+
+    it "should not be able to promote a non-pawn piece" do
+      expect(@white_rook.can_promote?).to be_falsey
+    end
+
   end
 end

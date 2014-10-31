@@ -19,6 +19,7 @@ class Knight < Piece
     x, y = new_loc - @location
     if (x.abs == 2 && y.abs == 1) || (x.abs == 1 && y.abs == 2)
     else
+      board.move_status = "Knights cannot make that move."
       return false
     end
     super

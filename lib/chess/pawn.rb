@@ -28,9 +28,10 @@ class Pawn < Piece
 
     if x == 0 && y == 1 && board[new_loc] == " "
     elsif x == 0 && y == 2 && @moves == 0 && board[new_loc] == " "
-    elsif y.abs == 1 && x.abs == 1 && board.board[new_loc].opponent?(self)
+    elsif y == 1 && x.abs == 1 && board.board[new_loc].opponent?(self)
     elsif en_passant?(new_loc, board)
     else
+      board.move_status = "Pawns cannot make that move."
       return false
     end
     super

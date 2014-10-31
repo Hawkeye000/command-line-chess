@@ -21,6 +21,7 @@ class Rook < Piece
     if x == 0 && y.abs > 0
     elsif y == 0 && x.abs > 0
     else
+      board.move_status = "Rooks cannot make that move."
       return false
     end
     super

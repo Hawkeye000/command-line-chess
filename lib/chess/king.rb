@@ -20,6 +20,7 @@ class King < Piece
     if x.abs <= 1 && y.abs <= 1
     elsif check_castle(self, board, x) && !self.check?(board)
     else
+      board.move_status = "Kings cannot make that move."
       return false
     end
     super(new_loc, board)

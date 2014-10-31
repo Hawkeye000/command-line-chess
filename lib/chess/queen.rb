@@ -21,6 +21,7 @@ class Queen < Piece
     elsif x == 0 && y.abs > 0
     elsif y == 0 && x.abs > 0
     else
+      board.move_status = "Queens cannot make that move."
       return false
     end
     super

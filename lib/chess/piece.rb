@@ -106,6 +106,9 @@ class Piece
     if board[new_loc].nil?
       board.move_status = "Position is off the board"
       return false
+    elsif @location == new_loc
+      board.move_status = "Piece must move"
+      return false
     elsif board.piece_between?(@location, new_loc)
       board.move_status = "Piece in between move"
       return false

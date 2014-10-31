@@ -19,6 +19,7 @@ class Bishop < Piece
     x, y = new_loc - @location
     if x.abs == y.abs
     else
+      board.move_status = "Bishops cannot make that move."
       return false
     end
     super

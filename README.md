@@ -13,6 +13,12 @@ Make moves by entering the two squares you want to move a piece from and to in t
 
 Castle by moving the King to its final position after castling.
 
+Web App
+-------
+This libray is used in the Web App https://github.com/Hawkeye000/sinatra-chess.
+
+See this in use at http://hawkeye-chess.herokuapp.com/
+
 Dependencies
 ------------
-* Colorize
+See Gemfile.

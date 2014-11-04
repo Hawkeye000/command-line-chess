@@ -36,6 +36,7 @@ describe King do
       before do
         @board = Board.new
         @king = @board["E1"]
+        @op_king = @board["E8"]
         @board.rv_piece("F1")
         @board.rv_piece("G1")
       end
@@ -79,6 +80,17 @@ describe King do
         expect(@king.check?(@board)).to be_falsey
         expect(@king.valid_move?("G1", @board)).to be_falsey
         expect(@board["F1"]).to eq(" ")
+      end
+
+      it "should be able to move through empty squares" do
+        @board.move("D2", "D4")
+        @board.move("D7", "D5")
+        @board.move("C1", "E3")
+        @board.move("C8", "E6")
+        @board.move("B1", "C3")
+        @board.move("B8", "C6")
+        expect(@king.valid_move?("C1", @board)).to be_truthy
+        expect(@op_king.valid_move?("C8", @board)).to be_truthy
       end
 
     end

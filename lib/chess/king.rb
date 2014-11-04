@@ -18,7 +18,7 @@ class King < Piece
   def valid_move?(new_loc, board)
     x, y = new_loc - @location
     if x.abs <= 1 && y.abs <= 1
-    elsif check_castle(self, board, x) && !self.check?(board)
+    elsif check_castle(self, board, x, y) && !self.check?(board)
     else
       board.move_status = "Kings cannot make that move."
       return false
@@ -29,7 +29,7 @@ class King < Piece
   def check?(board)
     board.each do |loc, piece|
       if piece.opponent?(self) && piece.valid_move?(@location, board)
-        return true
+        return loc, @location
       end
     end
     return false

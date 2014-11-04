@@ -1,4 +1,5 @@
 require_relative '../lib/chess/king.rb'
+require 'spec_helper'
 
 describe King do
 
@@ -89,8 +90,12 @@ describe King do
         @board.move("C8", "E6")
         @board.move("B1", "C3")
         @board.move("B8", "C6")
+        @board.move("D1", "D3")
+        @board.move("D8", "D6")
         expect(@king.valid_move?("C1", @board)).to be_truthy
         expect(@op_king.valid_move?("C8", @board)).to be_truthy
+        expect(@op_king.valid_move?("C1", @board)).to be_falsey
+        expect(@king.will_be_in_check?(@king.location, "C1", @board)).to be_falsey
       end
 
     end

@@ -90,8 +90,12 @@ def squares_between(loc_1, loc_2)
   return squares_between
 end
 
-def check_castle(king, board, horiz_move)
+def check_castle(king, board, horiz_move, vert_move)
   if king.moves > 0 || horiz_move.abs != 2
+    return false
+  end
+
+  unless vert_move == 0
     return false
   end
 

@@ -29,7 +29,7 @@ class Game
   end
 
   def move(loc_1, loc_2)
-    if @board[loc_1].color == @turn
+    if @board[loc_1].color == @turn.color
       if @turn.move(loc_1, loc_2, @board)
         @turn, @opponent = @opponent, @turn
         @movelist << "#{@board[loc_2].icon} #{loc_1} #{loc_2}"

@@ -9,6 +9,11 @@ class Game
     @black_player = Player.new("black")
     @turn = @white_player
     @opponent = @black_player
+    @movelist = []
+  end
+
+  def movelist
+    @movelist
   end
 
   def save(file_name)
@@ -20,6 +25,14 @@ class Game
   def self.load(file_name)
     File.open(file_name) do |file|
       Marshal.load(file)
+    end
+  end
+
+  def move(loc_1, loc_2)
+    if @board[loc_1].color == @turn
+      if @turn.move(loc_1, loc_2, @board)
+        @movelist << "#{@board[loc_2].icon} #{loc_1} #{loc_2}"
+      end
     end
   end
 

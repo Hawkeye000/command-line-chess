@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'chess/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'chess'
+  spec.name = 'chess_game'
   spec.version = '0.0.11'
   spec.date = '2014-10-26'
   spec.authors = ["Benjamin Pearce"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = "Play chess using the command line."
   spec.description = "Contain libraries for setting up and playing games of chess,\
                   making and validating moves, and evaluating victory conditionspec."
-  spec.homepage = ""
+  spec.homepage = "https://github.com/bcpearce/command-line-chess"
   spec.license = "MIT"
 
   spec.files = `git ls-files`.split($/)
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency 'bundler', '~> 1.3'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rake', '10.3.2'
+  spec.add_development_dependency 'rspec', '~> 3.1'
 
   spec.add_runtime_dependency 'colorize', '~> 0.7.3'
 

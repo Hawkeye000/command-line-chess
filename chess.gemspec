@@ -5,7 +5,7 @@ require 'chess/version'
 Gem::Specification.new do |spec|
   spec.name = 'chess_game'
   spec.version = '0.0.13'
-  spec.date = '2014-10-26'
+  spec.date = '2017-08-05'
   spec.authors = ["Benjamin Pearce"]
   spec.email = ["hawk.git@bcpearce.com"]
   spec.summary = "Play chess using the command line."

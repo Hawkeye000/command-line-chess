@@ -2,8 +2,8 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'chess/version'
 
-Gem::Specification.new do |spec|
-  spec.name = 'chess_game'
+Gem::Specification.new 'chess' do |spec|
+  spec.name = 'chess'
   spec.version = '0.0.13'
   spec.date = '2017-08-05'
   spec.authors = ["Benjamin Pearce"]

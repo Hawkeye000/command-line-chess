@@ -1,5 +1,8 @@
+#encoding: UTF-8
 require_relative "board.rb"
 require_relative "player.rb"
+require 'json'
+require 'yaml'
 
 class Game
 
@@ -10,6 +13,14 @@ class Game
     @turn = @white_player
     @opponent = @black_player
     @movelist = []
+  end
+
+  def to_json
+    JSON.dump ({
+      serial:YAML.dump(self),
+      board:@board.board.map {|k,v| [k, v.to_s] }.to_h,
+      turn:@turn.color
+    })
   end
 
   def movelist

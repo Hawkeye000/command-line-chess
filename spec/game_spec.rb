@@ -29,4 +29,9 @@ describe Game do
     expect(@game.turn).to eq(@game.black_player)
   end
 
+  it "can package to json" do
+    game_json = @game.to_json
+    expect(JSON.load(game_json)).to be_a Hash
+  end
+
 end
